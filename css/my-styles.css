@@ -1,0 +1,48 @@
+.bg-transparant {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.intro-banner {
+  margin-top: 0rem;
+  background-image: url("../assets/banner.jpg");
+  background-color: #cccccc;
+  height: 500px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.publication-list {
+  padding-bottom: 1rem;
+}
+
+.publication-link {
+  color: black;
+}
+.publication-link:hover {
+  color: darkslategrey;
+  text-decoration: none;
+}
+.publication-link:visited {
+  text-decoration: none;
+}
+
+.footer-link {
+  color: white;
+}
+.footer-link:hover {
+  color: white;
+  text-decoration: none;
+}
+.footer-link:visited {
+  text-decoration: none;
+}
+
+ul.list-unstyled {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+li.publication-list {
+  margin-bottom: 10px;
+}
