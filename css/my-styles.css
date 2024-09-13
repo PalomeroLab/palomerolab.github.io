@@ -46,3 +46,26 @@ ul.list-unstyled {
 li.publication-list {
   margin-bottom: 10px;
 }
+
+.mta-bullet {
+  display: inline-block;
+  width: 1.3em;
+  height: 1.3em;
+  border-radius: 50%;
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  font-weight: bold;
+  line-height: 1.3em;
+  font-size: 1em;
+  margin: 0 0.2em;
+}
+
+.mta-1 {
+  background-color: #ee352e;
+}
+
+.mta-a,
+.mta-c {
+  background-color: #0039a6;
+}
