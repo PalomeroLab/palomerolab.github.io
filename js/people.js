@@ -7,10 +7,17 @@
  * @function fetchPeopleData
  * @description Fetches the JSON data containing information about lab members from GitHub.
  * @returns {Promise<Object>} A promise that resolves to the people data object.
+ *
+ * @details
+ * This url points to the file contained in the github repository rather than
+ * the file in the parent directory. This is because the file in the parent directory
+ * is considered unsecure and the fetch request is blocked by the browser, so we
+ * need to send an http request to the file in the repository to make the browser happy.
+ *
  */
 async function fetchPeopleData() {
   const url =
-    "https://raw.githubusercontent.com/PalomeroLab/palomerolab.org/main/people.json";
+    "https://raw.githubusercontent.com/PalomeroLab/palomerolab.github.io/main/people.json";
   try {
     const response = await fetch(url);
     if (!response.ok) {
@@ -62,18 +69,19 @@ async function renderPeopleSection() {
         const col = document.createElement("div");
         col.className = "col-sm-4 mx-0 px-2";
 
+        // TODO: templatize the card and store it in a separate file
         col.innerHTML = `
-          <div class="card">
-            <img src="${member.photo}" class="card-img-top" alt="${member.name}" />
-            <div class="card-body">
-              <p class="card-title">
-                <strong>${member.name}</strong>
-                ${member.website ? `<a href="${member.website}" target="_blank" rel="noopener noreferrer"><i class="bi bi-arrow-up-right-circle-fill"></i></a>` : ""}
-              </p>
-              <p class="card-text">${member.description}</p>
-            </div>
-          </div>
-        `;
+	  <div class="card">
+	    <img src="${member.photo}" class="card-img-top" alt="${member.name}" />
+	    <div class="card-body">
+	      <p class="card-title">
+		<strong>${member.name}</strong>
+		${member.website ? `<a href="${member.website}" target="_blank" rel="noopener noreferrer"><i class="bi bi-arrow-up-right-circle-fill"></i></a>` : ""}
+	      </p>
+	      <p class="card-text">${member.description}</p>
+	    </div>
+	  </div>
+	`;
 
         row.appendChild(col);
       });
