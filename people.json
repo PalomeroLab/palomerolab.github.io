@@ -1,0 +1,59 @@
+{
+  "Postdoctoral Fellows": [
+    {
+      "name": "Anouchka Laurent, Ph.D.",
+      "photo": "assets/photos/Anouchka.jpg",
+      "description": "Dr. Laurent is a postdoctoral fellow working on PTCL in the Palomero Lab"
+    },
+    {
+      "name": "Laura Quevedo, Ph.D.",
+      "photo": "assets/photos/Laura.jpg",
+      "description": "Dr. Quevedo is a postdoctoral fellow working on PTCL in the Palomero Lab",
+      "website": "https://twitter.com/lauriquepa"
+    },
+    {
+      "name": "Ruth Alonso Alonso, Ph.D.",
+      "photo": "assets/photos/Ruth.jpg",
+      "description": "Dr. Alonso is a postdoctoral fellow working on PTCL in the Palomero Lab"
+    }
+  ],
+  "Instructors": [
+    {
+      "name": "Dr. Wen-Hsuan Lin, M.D., Ph.D.",
+      "photo": "assets/photos/Wendy.jpg",
+      "description": "Dr. Wen-Hsuan Lin is a hematopathologist and physician-scientist in the Department of Pathology and Cell Biology working on PTCL in the Palomero Lab"
+    }
+  ],
+  "Students": [
+    {
+      "name": "Kalay Bertulfo, M.S.",
+      "photo": "assets/photos/Kalay.jpg",
+      "description": "Kalay Bertulfo is a Ph.D. student with the Department of Biology working on PTCL in the Palomero Lab"
+    }
+  ],
+  "Research Staff": [
+    {
+      "name": "Hannah Miller, B.S.",
+      "photo": "assets/photos/Hannah.jpg",
+      "description": "Hannah is the Palomero lab manager and a research technician"
+    },
+    {
+      "name": "Cindy Ma, M.P.H.",
+      "photo": "assets/photos/Cindy.jpg",
+      "description": "Cindy is a research technician"
+    },
+    {
+      "name": "Ryan D. Najac, B.A.",
+      "photo": "assets/photos/Najac.jpg",
+      "description": "Ryan is a research technician"
+    }
+  ],
+  "Past Members": [
+    {
+      "name": "Bobby Shih, Ph.D.",
+      "photo": "assets/photos/Bobby.jpg",
+      "description": "Bobby Shih received his Ph.D. from the Integrated Cellular, Molecular and Biomedical Studies Program at Columbia University working on PTCL in the Palomero Lab",
+      "website": "http://www.bobbyshih.net"
+    }
+  ]
+}
