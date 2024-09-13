@@ -4,6 +4,22 @@
 
 The lab website is built using [this template](https://github.com/StartBootstrap/startbootstrap-scrolling-nav).
 
+## Table of Contents
+
+- [Template](#template)
+- [File Structure](#file-structure)
+- [Maintenance](#maintenance)
+  - [Updating the "Recent Publications" Section](#updating-the-recent-publications-section)
+  - [Updating Lab Members](#updating-lab-members)
+  - [Uploading Photos](#uploading-photos)
+  - [Dynamic Content Generation](#dynamic-content-generation)
+- [Domain Management](#domain-management)
+- [Tips and Troubleshooting](#tips-and-troubleshooting)
+- [Additional Resources](#additional-resources)
+- [TODO](#todo)
+
+## Template
+
 The initial commit was created by cloning the template repository...
 
 ```sh
@@ -32,46 +48,30 @@ cp -r dist/* /path/to/palomerolab.org/
 The original file structure of the template repository is as follows:
 
 ```console
-dist/
-├── assets/
-│   └── favicon.ico
-├── css/
-│   └── styles.css
-├── index.html
-└── js/
-    └── scripts.js
-
-4 directories, 4 files
-```
-
-> [!CAUTION]
-> Do not modify styles.css or scripts.js directly.
-
-The current file structure of the repository is as follows:
-
-```console
 .
-├── CNAME
-├── README.md
+├── CNAME                  # Contains the custom domain name
+├── README.md              # Documentation for the repository
 ├── assets/
-│   ├── Columbia_University_logo_bg-dark.png
-│   ├── banner.jpg
-│   ├── favicon.png
+│   ├── Columbia_University_logo_bg-dark.png  # Used in the Footer
+│   ├── banner.jpg                            # The main banner image
+│   ├── favicon.png                           # Custom web icon
 │   └── photos/
-│       └── [team member photos]
+│       └── [lab member photos]
 ├── css/
-│   ├── my-styles.css
-│   └── styles.css
-├── index.html
+│   ├── my-styles.css      # Custom styles
+│   └── styles.css         # Original styles (do not modify)
+├── index.html             # Main HTML file (modified from original)
 ├── js/
-│   ├── people.js
-│   ├── publications.js
-│   └── scripts.js
-└── people.json
+│   ├── people.js          # Script for rendering lab members
+│   ├── publications.js    # Script for fetching publications
+│   └── scripts.js         # Original scripts (do not modify)
+└── people.json            # Text file containing lab member data
 ```
 
 > [!CAUTION]
-> Do not modify `styles.css` or `scripts.js` directly. Use `my-styles.css` for custom styles and add new scripts as needed.
+> Do not modify `styles.css` or `scripts.js` directly.
+> Use `my-styles.css` to add or override styles
+> and add new scripts to the `js/` folder as needed.
 
 ## Maintenance
 
@@ -80,9 +80,10 @@ The current file structure of the repository is as follows:
 You don't need to manually update the "Recent Publications" section. The website
 fetches the latest publications from PubMed using the [PubMed API](https://www.ncbi.nlm.nih.gov/home/develop/api/).
 
-### Updating Team Members
+### Updating Lab Members
 
-To update team members, edit the `people.json` file. This file is a JSON (JavaScript Object Notation) document that structures data in a human-readable format.
+To update lab members, edit the `people.json` file. This file is a
+JSON (JavaScript Object Notation) document that structures data in a human-readable format.
 
 Structure of `people.json`:
 
@@ -90,14 +91,14 @@ Structure of `people.json`:
 - Each category is an array of person objects
 - Each person object has properties like "name", "photo", "description", and optionally "website"
 
-To add, remove, or modify team members:
+To add, remove, or modify lab members:
 
 1. Navigate to `people.json` in the GitHub repository
 2. Click the edit (pencil) icon
 3. Make your changes, following the existing structure
 4. Commit your changes with a descriptive message
 
-Example of adding a new team member:
+Example of adding a new lab member:
 
 ```json
 "Research Staff": [
@@ -113,7 +114,7 @@ Example of adding a new team member:
 
 ### Uploading Photos
 
-To add new team member photos:
+To add new lab member photos:
 
 1. Go to the `assets/photos/` directory in the GitHub repository
 2. Click "Add file" > "Upload files"
@@ -125,7 +126,7 @@ To add new team member photos:
 
 The website uses JavaScript to dynamically generate content:
 
-- `people.js`: Fetches and renders the team members from `people.json`
+- `people.js`: Fetches and renders the lab members from `people.json`
 - `publications.js`: Fetches recent publications from PubMed and renders them on the page
 
 These scripts interact with the HTML to create dynamic sections of the website.
