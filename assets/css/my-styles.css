@@ -1,5 +1,11 @@
-.bg-transparant {
-  background-color: rgba(0, 0, 0, 0.7);
+/* https://sps.columbia.edu/visual-identity/color-palette */
+.navbar,
+.navbar-dark .navbar-nav .nav-link {
+  background-color: #012169 !important;
+}
+
+footer.bg-dark {
+  background-color: #012169 !important;
 }
 
 .intro-banner {
@@ -69,11 +75,3 @@ li.publication-list {
 .mta-c {
   background-color: #0039a6;
 }
-
-/* Uncomment to change the color of the navbar and footer */
-/* .navbar, .navbar-dark .navbar-nav .nav-link { */
-/*   background-color: #337ab7 !important; */
-/* } */
-/* footer.bg-dark { */
-/*   background-color: #337ab7 !important; */
-/* } */
