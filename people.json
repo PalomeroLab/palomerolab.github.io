@@ -1,58 +1,58 @@
 {
   "Postdoctoral Fellows": [
     {
-      "name": "Anouchka Laurent, Ph.D.",
+      "name": "Anouchka Laurent, PhD",
       "photo": "assets/photos/Anouchka.jpg",
       "description": "Dr. Laurent is a postdoctoral fellow working on PTCL in the Palomero Lab"
     },
     {
-      "name": "Laura Quevedo, Ph.D.",
+      "name": "Laura Quevedo, PhD",
       "photo": "assets/photos/Laura.jpg",
       "description": "Dr. Quevedo is a postdoctoral fellow in the Palomero Lab, working on implementing multi-omic and single-cell analysis to study PTCL using murine models and human samples",
       "website": "https://twitter.com/lauriquepa"
     },
     {
-      "name": "Ruth Alonso Alonso, Ph.D.",
+      "name": "Ruth Alonso Alonso, PhD",
       "photo": "assets/photos/Ruth.jpg",
       "description": "Dr. Alonso is a postdoctoral fellow working on PTCL in the Palomero Lab"
     }
   ],
   "Instructors": [
     {
-      "name": "Dr. Wen-Hsuan Lin, M.D., Ph.D.",
+      "name": "Dr. Wen-Hsuan Lin, MD, PhD",
       "photo": "assets/photos/Wendy.jpg",
       "description": "Dr. Wen-Hsuan Lin is a hematopathologist and physician-scientist in the Department of Pathology and Cell Biology working on PTCL in the Palomero Lab"
     }
   ],
   "Students": [
     {
-      "name": "Kalay Bertulfo, M.S.",
+      "name": "Kalay Bertulfo, MS",
       "photo": "assets/photos/Kalay.jpg",
-      "description": "Kalay Bertulfo is a Ph.D. student with the Department of Biology working on PTCL in the Palomero Lab"
+      "description": "Kalay Bertulfo is a PhD student with the Department of Biology working on PTCL in the Palomero Lab"
     }
   ],
   "Research Staff": [
     {
-      "name": "Hannah Miller, B.S.",
+      "name": "Hannah Miller, BS",
       "photo": "assets/photos/Hannah.jpg",
       "description": "Hannah is the Palomero lab manager and a research technician"
     },
     {
-      "name": "Cindy Ma, M.P.H.",
+      "name": "Cindy Ma, MPH",
       "photo": "assets/photos/Cindy.jpg",
       "description": "Cindy is a research technician"
     },
     {
-      "name": "Ryan D. Najac, B.A.",
+      "name": "Ryan D. Najac, BA",
       "photo": "assets/photos/Najac.jpg",
       "description": "Ryan is a very good research technician"
     }
   ],
   "Past Members": [
     {
-      "name": "Bobby Shih, Ph.D.",
+      "name": "Bobby Shih, PhD",
       "photo": "assets/photos/Bobby.jpg",
-      "description": "Bobby Shih received his Ph.D. from the Integrated Cellular, Molecular and Biomedical Studies Program at Columbia University working on PTCL in the Palomero Lab",
+      "description": "Bobby Shih received his PhD from the Integrated Cellular, Molecular and Biomedical Studies Program at Columbia University working on PTCL in the Palomero Lab",
       "website": "http://www.bobbyshih.net"
     }
   ]

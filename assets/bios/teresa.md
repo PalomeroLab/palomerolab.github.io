@@ -1,4 +1,4 @@
-# Teresa Palomero, Ph.D.
+# [Teresa Palomero, PhD](https://www.vagelos.columbia.edu/profile/teresa-m-palomero-phd)
 
 <a href="https://twitter.com/teresa_palomero" target="_blank"><i class="bi bi-twitter-x"></i></a>
 
@@ -12,4 +12,3 @@ and drivers of resistance to chemotherapy in relapsed leukemias ([Oshima et al. 
 Her current research focuses on the elucidation of the oncogenic mechanisms driven by these
 genetic alterations, the development of genetically manipulated mouse models of T-cell lymphoma
 and the therapeutic targeting of key oncogenic pathways responsible for T-cell transformation.
-
