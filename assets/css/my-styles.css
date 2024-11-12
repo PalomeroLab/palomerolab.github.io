@@ -69,3 +69,11 @@ li.publication-list {
 .mta-c {
   background-color: #0039a6;
 }
+
+/* Uncomment to change the color of the navbar and footer */
+/* .navbar, .navbar-dark .navbar-nav .nav-link { */
+/*   background-color: #337ab7 !important; */
+/* } */
+/* footer.bg-dark { */
+/*   background-color: #337ab7 !important; */
+/* } */
