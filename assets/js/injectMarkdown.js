@@ -52,6 +52,7 @@ async function injectMarkdownFromUrl(filePath, elementId) {
 // Add this call to execute the function when the document is ready
 document.addEventListener("DOMContentLoaded", function () {
   console.log("Document loaded, calling injectMarkdownFromUrl...");
+  injectMarkdownFromUrl("assets/bios/about.md", "about-content");
   injectMarkdownFromUrl("assets/bios/teresa.md", "teresa-bio");
 });
 
