@@ -3,8 +3,6 @@
  * @brief Fetches a markdown file from a specified URL, converts it to HTML, and injects its content into multiple sections.
  */
 
-import { marked } from "marked";
-
 // Ensure that marked is correctly loaded
 if (typeof marked === "undefined") {
   console.error("marked.js is not loaded correctly.");
@@ -41,8 +39,3 @@ export async function injectMarkdownFromUrl(filePath, elementId) {
     console.error("Error loading or converting markdown:", error);
   }
 }
-
-// This line runs after the page is fully loaded, but only if it's being invoked properly
-document.addEventListener("DOMContentLoaded", function () {
-  injectMarkdownFromUrl("assets/bios/teresa.md", "teresa-bio");
-});
