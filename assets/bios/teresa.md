@@ -1,4 +1,4 @@
-# [Teresa Palomero, PhD](https://www.vagelos.columbia.edu/profile/teresa-m-palomero-phd)
+# Teresa Palomero, PhD
 
 <!-- <a href="https://twitter.com/teresa_palomero" target="_blank"><i class="bi bi-twitter-x"></i></a> -->
 
@@ -7,7 +7,8 @@ at Columbia University Irving Medical Center (CUIMC). Over the last years she ha
 the power of next generation sequencing approaches to identify novel oncogenes and tumor suppressors
 in T-ALL ([Van Vlierberghe et al. 2010](https://doi.org/10.1038/ng.542))
 and peripheral T-cell lymphomas ([da Silva Almeida et al. 2015](https://doi.org/10.1038/ng.3442))
-and drivers of resistance to chemotherapy in relapsed leukemias ([Oshima et al. 2016](https://doi.org/10.1073/pnas.1608420113)).
+and drivers of resistance to chemotherapy in relapsed leukemias
+([Tzoneva, et al. 2013](https://doi.org/10.1038/nm.3078); [Oshima et al. 2016](https://doi.org/10.1073/pnas.1608420113)).
 
 Her current research focuses on the elucidation of the oncogenic mechanisms driven by these
 genetic alterations, the development of genetically manipulated mouse models of T-cell lymphoma
