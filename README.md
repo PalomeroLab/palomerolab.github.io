@@ -25,30 +25,45 @@ The lab website is built using [this template](https://github.com/StartBootstrap
 ├── CNAME                       # Contains the custom domain name
 ├── README.md                   # Documentation for the repository
 ├── assets/
-│   ├── banner.jpg              # The main banner image
 │   ├── CU_logo_bg-dark.png     # Columbia University logo (footer)
+│   ├── bios                    # Folder containing md files
+│   │   ├── about.md            # About the lab
+│   │   └── [lab member bios]
+│   ├── banner.jpg              # The main banner image
 │   ├── css
 │   │   └── my-styles.css       # Custom styles (add or override)
 │   ├── favicon.png             # Custom web icon
 │   ├── js
+│   │   ├── injectMarkdown.js   # Script for rendering Markdown content
 │   │   ├── people.js           # Script for rendering lab members
 │   │   └── publications.js     # Script for fetching publications
 │   └── photos/
 │       └── [lab member photos]
 ├── index.html                  # Main HTML file
+├── prettier.sh                 # Script to automatically format files
 └── people.json                 # Text file containing lab member data
 ```
 
 ## Maintenance
 
+You should not need to modify the HTML or CSS files directly.
+The website is designed to be easy to update without needing to know HTML or
+CSS. Most content is stored in Markdown files and JSON, which are human-readable
+
 ### Dynamic Content Generation
 
 The website uses JavaScript to dynamically generate content:
 
+- `injectMarkdown.js`: Injects content from Markdown files into named sections
 - `people.js`: Fetches and renders the lab members from `people.json`
-- `publications.js`: Fetches recent publications from PubMed and renders them on the page
+- `publications.js`: Fetches and renders recent publications from PubMed
 
-These scripts interact with the HTML to create dynamic sections of the website.
+### Markdown Content
+
+Content for the "About" section and lab member bios is stored in Markdown files.
+These files are located in the `assets/bios/` directory. For more information on
+markdown syntax, refer to the [Markdown Guide](https://www.markdownguide.org/basic-syntax/)
+and the [GitHub Markdown Guide](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
 
 ### Updating the "Recent Publications" Section"
 
