@@ -1,4 +1,4 @@
-# Teresa Palomero, Ph.D. 
+# Teresa Palomero, Ph.D.
 
 <a href="https://twitter.com/teresa_palomero" target="_blank"><i class="bi bi-twitter"></i></a>
 
