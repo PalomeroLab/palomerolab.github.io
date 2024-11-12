@@ -13,7 +13,6 @@
  * the file in the parent directory. This is because the file in the parent directory
  * is considered unsecure and the fetch request is blocked by the browser, so we
  * need to send an http request to the file in the repository to make the browser happy.
- *
  */
 async function fetchPeopleData() {
   const url =
