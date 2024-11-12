@@ -18,72 +18,48 @@ The lab website is built using [this template](https://github.com/StartBootstrap
 - [Additional Resources](#additional-resources)
 - [TODO](#todo)
 
-## Template
-
-The initial commit was created by cloning the template repository...
-
-```sh
-git clone https://github.com/StartBootstrap/startbootstrap-scrolling-nav.git
-```
-
-then building the website using the template's instructions...
-
-```sh
-cd startbootstrap-scrolling-nav
-npm install
-npm run build
-```
-
-and finally copying the built files to the root of this repository.
-
-```sh
-cp -r dist/* /path/to/palomerolab.org/
-```
-
-> [!NOTE]
-> You do not need to perform these steps again. This is just for reference.
-
 ## File Structure
-
-The original file structure of the template repository is as follows:
 
 ```console
 .
-├── CNAME                  # Contains the custom domain name
-├── README.md              # Documentation for the repository
+├── CNAME                       # Contains the custom domain name
+├── README.md                   # Documentation for the repository
 ├── assets/
-│   ├── Columbia_University_logo_bg-dark.png  # Used in the Footer
-│   ├── banner.jpg                            # The main banner image
-│   ├── favicon.png                           # Custom web icon
+│   ├── banner.jpg              # The main banner image
+│   ├── CU_logo_bg-dark.png     # Columbia University logo (footer)
+│   ├── css
+│   │   └── my-styles.css       # Custom styles (add or override)
+│   ├── favicon.png             # Custom web icon
+│   ├── js
+│   │   ├── people.js           # Script for rendering lab members
+│   │   └── publications.js     # Script for fetching publications
 │   └── photos/
 │       └── [lab member photos]
-├── css/
-│   ├── my-styles.css      # Custom styles
-│   └── styles.css         # Original styles (do not modify)
-├── index.html             # Main HTML file (modified from original)
-├── js/
-│   ├── people.js          # Script for rendering lab members
-│   ├── publications.js    # Script for fetching publications
-│   └── scripts.js         # Original scripts (do not modify)
-└── people.json            # Text file containing lab member data
+├── index.html                  # Main HTML file
+└── people.json                 # Text file containing lab member data
 ```
-
-> [!CAUTION]
-> Do not modify `styles.css` or `scripts.js` directly.
-> Use `my-styles.css` to add or override styles
-> and add new scripts to the `js/` folder as needed.
 
 ## Maintenance
 
+### Dynamic Content Generation
+
+The website uses JavaScript to dynamically generate content:
+
+- `people.js`: Fetches and renders the lab members from `people.json`
+- `publications.js`: Fetches recent publications from PubMed and renders them on the page
+
+These scripts interact with the HTML to create dynamic sections of the website.
+
 ### Updating the "Recent Publications" Section"
 
-You don't need to manually update the "Recent Publications" section. The website
-fetches the latest publications from PubMed using the [PubMed API](https://www.ncbi.nlm.nih.gov/home/develop/api/).
+You don't need to manually update the "Recent Publications" section.
+The website automatically fetches the latest publications from PubMed using the
+[PubMed API](https://www.ncbi.nlm.nih.gov/home/develop/api/).
 
 ### Updating Lab Members
 
-To update lab members, edit the `people.json` file. This file is a
-JSON (JavaScript Object Notation) document that structures data in a human-readable format.
+To update lab members, edit the `people.json` file. This is a JSON document
+(JavaScript Object Notation) that structures data in a human-readable format.
 
 Structure of `people.json`:
 
@@ -122,15 +98,6 @@ To add new lab member photos:
 4. Commit the changes
 5. Update the corresponding entry in `people.json` with the correct file path
 
-### Dynamic Content Generation
-
-The website uses JavaScript to dynamically generate content:
-
-- `people.js`: Fetches and renders the lab members from `people.json`
-- `publications.js`: Fetches recent publications from PubMed and renders them on the page
-
-These scripts interact with the HTML to create dynamic sections of the website.
-
 ## Domain Management
 
 The website domain (palomerolab.org) is registered through [Porkbun](https://porkbun.com/).
@@ -138,7 +105,9 @@ The website is hosted for free on GitHub Pages, with only the domain name requir
 
 ### Setting Up Custom Domains on GitHub Pages
 
-For detailed instructions on setting up custom domains with GitHub Pages, including A records configuration, refer to the [GitHub Pages documentation](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site).
+For detailed instructions on setting up custom domains with GitHub Pages,
+including A records configuration, refer to the
+[GitHub Pages documentation](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site).
 
 #### CNAME File
 
@@ -148,7 +117,8 @@ site.
 
 ### Subdomains and Project Pages
 
-Other repositories with GitHub Pages enabled are accessible under palomerolab.org. For example, a repository named `project` would be accessible at `palomerolab.org/project`.
+Other repositories with GitHub Pages enabled are accessible under palomerolab.org.
+For example, a repository named `project` would be accessible at `palomerolab.org/project`.
 
 ## Tips and Troubleshooting
 
@@ -173,9 +143,8 @@ issue in the repository or ask for help.
 ## TODO
 
 - [ ] Automatically format changes with `prettier`
-- [ ] Disallow direct modifications to `styles.css` and `scripts.js`
-- [ ] Prevent accidental deletion of `people.json` or `assets/photos/`
 - [ ] Implement a GitHub Action to validate JSON syntax on every commit
+- [ ] Prevent accidental deletion of `people.json` or `assets/photos/`
 - [ ] Create a web-based form for editing `people.json` to avoid syntax errors
 - [ ] Add a script to automatically resize and optimize uploaded photos
 - [ ] Implement a staging environment for testing changes before they go live
