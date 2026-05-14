@@ -51,10 +51,8 @@ function injectContent(elementId, content) {
  * After conversion, it injects the HTML content into the target element specified by `elementId`.
  */
 async function injectMarkdownFromUrl(filePath, elementId) {
-  const url = `https://raw.githubusercontent.com/PalomeroLab/palomerolab.github.io/main/${filePath}`;
-
   try {
-    const markdownText = await fetchData(url); // Using the fetchData helper
+    const markdownText = await fetchData(filePath); // Using the fetchData helper
     const htmlContent = marked.parse(markdownText);
     injectContent(elementId, htmlContent); // Using the injectContent helper
     console.log("Markdown injected successfully.");
@@ -72,8 +70,7 @@ async function injectMarkdownFromUrl(filePath, elementId) {
  * This function fetches the people data from a GitHub-hosted JSON file containing lab member information.
  */
 async function fetchPeopleData() {
-  const url =
-    "https://raw.githubusercontent.com/PalomeroLab/palomerolab.github.io/main/people.json";
+  const url = "people.json";
   return fetchData(url); // Using the fetchData helper
 }
 

@@ -9,8 +9,8 @@ if ! command -v prettier &> /dev/null; then
 	exit 1
 fi
 
-# Format index.html with custom line length
-prettier --write --print-width "$LINELEN" ./index.html
+# Format Hugo layout with custom line length
+prettier --write --print-width "$LINELEN" ./layouts/index.html
 
 # Format all other files with default settings
-prettier --write --ignore-unknown README.md people.json assets/**
+prettier --write --ignore-unknown README.md hugo.toml .github/workflows/*.yml static/people.json static/assets/**
