@@ -1,6 +1,7 @@
 baseURL = "https://www.palomerolab.org/"
 languageCode = "en-us"
 title = "Palomero Lab"
+disableKinds = ["taxonomy", "term"]
 
 [markup]
   [markup.goldmark]
