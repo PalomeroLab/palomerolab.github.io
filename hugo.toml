@@ -1,0 +1,8 @@
+baseURL = "https://www.palomerolab.org/"
+languageCode = "en-us"
+title = "Palomero Lab"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
