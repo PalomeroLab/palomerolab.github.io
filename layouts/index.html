@@ -44,6 +44,7 @@
 
     <!-- Stylesheets -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@latest/font/bootstrap-icons.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css" />
     <link href="https://cdn.jsdelivr.net/npm/startbootstrap-scrolling-nav@5.0.6/dist/css/styles.min.css" rel="stylesheet" />
     <link href='{{ "assets/css/styles.css" | relURL }}' rel="stylesheet" />
   </head>
@@ -129,6 +130,7 @@
                     <div class="card-body">
                       <p class="card-title"><strong>{{ .name }}</strong></p>
                       <p class="card-text">{{ .description }}</p>
+                      {{ with .website }}<a class="card-link" href="{{ . }}" target="_blank" rel="noopener" aria-label="Website"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>{{ end }}
                     </div>
                   </div>
                 </div>
