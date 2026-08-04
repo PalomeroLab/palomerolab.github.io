@@ -1,0 +1,11 @@
+<!-- Section: About -->
+<section id="about" class="py-5">
+  <div class="container mx-auto">
+    <div class="row">
+      <div class="col-lg-10 mx-auto">
+        <!-- About Content (rendered from content/about.md) -->
+        <div id="about-content">{{ with site.GetPage "about" }}{{ .Content }}{{ end }}</div>
+      </div>
+    </div>
+  </div>
+</section>
