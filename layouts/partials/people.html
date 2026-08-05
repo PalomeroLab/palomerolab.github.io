@@ -21,6 +21,7 @@
           {{ else }}{{ range slice "jpg" "jpeg" "png" "webp" }}
           {{ if not $img }}{{ $img = resources.Get (printf "photos/%s.%s" $name .) }}{{ end }}
           {{ end }}{{ end }}
+          {{ if not $img }}{{ warnf "no photo for %q. Add assets/photos/%s.jpg, or give the member a photo field." $name $name }}{{ end }}
           <div class="{{ cond $wide "col-12" "col-sm-4" }} mx-0 px-2">
             <div class="card">
               <div class="{{ cond $wide "row" "" }}">
