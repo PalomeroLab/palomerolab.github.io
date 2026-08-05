@@ -1,0 +1,43 @@
+{{/* One team card. Context: a member map from data/team.yaml, plus "wide" for a
+full width card with the photo beside the text. A member with a "bio" field
+takes its text from the content fragment of that name, not from "description".
+See person-photo.html for how the photo reaches the card. */}}
+{{ $m := .member }}
+<div class="{{ cond .wide "col-12" "col-sm-4" }} mx-0 px-2">
+  <div class="card">
+    <div class="{{ cond .wide "row" "" }}">
+      <div class="{{ cond .wide "col-auto" "" }}">
+        {{ partial "person-photo.html" . }}
+      </div>
+      <div class="{{ cond .wide "col" "" }}">
+        <div class="card-body">
+          <p class="card-title"><strong>{{ $m.name }}{{ with $m.suffix }}, {{ . }}{{ end }}</strong></p>
+          {{ with $m.bio }}{{ with site.GetPage . }}<div class="card-text">{{ .Content }}</div>{{ end }}
+          {{ else }}<p class="card-text">{{ $m.description }}</p>{{ end }}
+          {{ with $m.joined }}<p class="card-text"><small class="text-muted">Joined the lab in {{ . }}</small></p>{{ end }}
+          {{ with $m.focus }}<p class="card-text"><small class="text-muted">{{ . }}</small></p>{{ end }}
+          {{ with $m.fun_fact }}<p class="card-text"><small class="text-muted">{{ . }}</small></p>{{ end }}
+          {{ if or $m.orcid $m.github $m.x $m.email $m.phone $m.cv $m.website }}
+          <p class="card-text">
+            {{ with $m.orcid }}<a class="card-link" href="https://orcid.org/{{ . }}" target="_blank" rel="noopener" aria-label="ORCID"
+              ><i class="fa-brands fa-orcid"></i></a
+            >{{ end }}{{ with $m.github }}<a class="card-link" href="https://github.com/{{ . }}" target="_blank" rel="noopener" aria-label="GitHub"
+              ><i class="fa-brands fa-github"></i></a
+            >{{ end }}{{ with $m.x }}<a class="card-link" href="https://x.com/{{ . }}" target="_blank" rel="noopener" aria-label="X"
+              ><i class="fa-brands fa-x-twitter"></i></a
+            >{{ end }}{{ with $m.email }}<a class="card-link" href="mailto:{{ . }}" aria-label="Email"
+              ><i class="fa-solid fa-envelope"></i></a
+            >{{ end }}{{ with $m.phone }}<a class="card-link" href="tel:{{ replaceRE `[^+0-9]` `` . }}" aria-label="Phone"
+              ><i class="fa-solid fa-phone"></i></a
+            >{{ end }}{{ with $m.cv }}<a class="card-link" href="{{ . | relURL }}" target="_blank" rel="noopener" aria-label="CV"
+              ><i class="fa-solid fa-file-lines"></i></a
+            >{{ end }}{{ with $m.website }}<a class="card-link" href="{{ . }}" target="_blank" rel="noopener" aria-label="Website"
+              ><i class="fa-solid fa-arrow-up-right-from-square"></i></a
+            >{{ end }}
+          </p>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,71 +1,75 @@
-# required: name, photo, description
-# optional: degree, joined, focus, fun_fact, website
+# required: name, description
+# optional: suffix, photo, joined, focus, fun_fact
+# photo defaults to the file in assets/photos/ that carries the member name,
+# with the extension jpg, jpeg, png, or webp. Set photo only for an exception,
+# as a path under assets/, for example photos/group/lin-2019.png
+# optional, each one adds an icon link to the card: orcid, github, x, email, phone, cv, website
+# orcid takes the bare identifier, for example 0000-0002-1825-0097
+# github and x take the bare handle, without the @
+# cv takes a path under static/, without the static/ prefix, for example assets/cv/najac.pdf
+# bio names a fragment in content/. It replaces description, for a longer text.
+# wide, on a group, gives its cards the full width with the photo beside the text.
 # Groups render in the order below. Members render in alphabetical order.
+- group: Principal Investigator
+  wide: true
+  members:
+    - name: Teresa Palomero
+      suffix: PhD
+      bio: teresa
+      cv: assets/cv/TeresaPalomero-CV.pdf
 - group: Postdoctoral Fellows
   members:
     - name: Anouchka Laurent
-      degree: PhD
-      photo: assets/photos/Anouchka.jpg
+      suffix: PhD
       description: Dr. Laurent is a postdoctoral fellow working on PTCL in the Palomero Lab
     - name: Laura Quevedo
-      degree: PhD
-      photo: assets/photos/Laura.jpg
+      suffix: PhD
       description: Dr. Quevedo is a postdoctoral fellow in the Palomero Lab, working on implementing multi-omic and single-cell analysis to study PTCL using murine models and human samples
-      website: https://twitter.com/lauriquepa
+      x: lauriquepa
     - name: Ruth Alonso Alonso
-      degree: PhD
-      photo: assets/photos/Ruth.jpg
+      suffix: PhD
       description: Dr. Alonso is a postdoctoral fellow working on PTCL in the Palomero Lab
 - group: Instructors
   members: []
 - group: Research Staff
   members:
     - name: Ryan D. Najac
-      degree: BA
-      photo: assets/photos/Najac.jpg
+      suffix: BA
       description: Ryan is a very good research technician
+      orcid: 0009-0000-6280-5646
+      github: rdnajac
 - group: Students
   members: []
 - group: Past Members
   members:
     - name: Wen-Hsuan Lin
-      degree: MD, PhD
-      photo: assets/photos/Wendy.jpg
+      suffix: MD, PhD
       description: Dr. Wen-Hsuan Lin was a hematopathologist and physician-scientist in the Department of Pathology and Cell Biology who worked on PTCL in the Palomero Lab
     - name: Kalay Bertulfo
-      degree: MS
-      photo: assets/photos/Kalay.jpg
+      suffix: MS
       description: Kalay Bertulfo was a PhD student with the Department of Biology who worked on PTCL in the Palomero Lab
     - name: Hannah Miller
-      degree: BS
-      photo: assets/photos/Hannah.jpg
+      suffix: BS
       description: Hannah was the Palomero lab manager and a research technician
     - name: Cindy Ma
-      degree: MPH
-      photo: assets/photos/Cindy.jpg
+      suffix: MPH
       description: Cindy was a research technician
     - name: Bobby Shih
-      degree: PhD
-      photo: assets/photos/Bobby.jpg
+      suffix: PhD
       description: Bobby Shih received his PhD from the Integrated Cellular, Molecular and Biomedical Studies Program at Columbia University working on PTCL in the Palomero Lab
       website: http://www.bobbyshih.net
     - name: Jose Rodriguez Cortes
-      degree: PhD
-      photo: assets/photos/Jose.jpg
+      suffix: PhD
       description: Dr. Cortes was a postdoctoral fellow who worked on PTCL in the Palomero Lab
     - name: Robert Albero Gallego
-      degree: PhD
-      photo: assets/photos/Robert.jpg
+      suffix: PhD
       description: Dr. Albero Gallego was a computational postdoctoral fellow in the Palomero Lab
     - name: Christine Moon
-      degree: PhD
-      photo: assets/photos/Christine.jpg
+      suffix: PhD
       description: Dr. Moon was an MSTP student in the Palomero Group
     - name: Adam Mackey
-      degree: BS
-      photo: assets/photos/Adam.jpg
+      suffix: BS
       description: Adam was the lab manager and a research technician
     - name: Clara Reglero Gomez
-      degree: PhD
-      photo: assets/photos/Clara.jpg
+      suffix: PhD
       description: Dr. Reglero Gomez was a postdoctoral fellow who worked on PTCL in the Palomero Lab

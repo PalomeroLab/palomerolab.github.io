@@ -4,10 +4,6 @@ build:
   list: never
 ---
 
-# Teresa Palomero, PhD
-
-<!-- <a href="https://twitter.com/teresa_palomero" target="_blank"><i class="bi bi-twitter-x"></i></a> -->
-
 Dr. Palomero is a Professor of Pathology and Cell Biology at the Institute for Cancer Genetics
 at Columbia University Irving Medical Center (CUIMC). Over the last years she has leveraged
 the power of next generation sequencing approaches to identify novel oncogenes and tumor suppressors

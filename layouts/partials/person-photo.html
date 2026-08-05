@@ -1,0 +1,29 @@
+{{/* The photo for one team card. Context: the member, plus "wide" for the
+larger card. It looks in assets/photos/ for a file that carries the member
+name, in each of the extensions below. A photo field overrides the guess, with
+a path under assets/. Hugo scales the file to the size that the card shows, and
+gives a 2x copy for a dense screen, so a large original costs the reader
+nothing. A photo that is already small stays as it is. A missing photo leaves a
+broken image and does not stop the build. */}}
+{{ $m := .member }}
+{{ $width := cond .wide 300 400 }}
+{{ $img := "" }}
+{{ with $m.photo }}{{ $img = resources.Get . }}{{ else }}
+{{ range slice "jpg" "jpeg" "png" "webp" }}
+{{ if not $img }}{{ $img = resources.Get (printf "photos/%s.%s" $m.name .) }}{{ end }}
+{{ end }}{{ end }}
+{{ with $img }}
+{{ $1x := . }}{{ if gt .Width $width }}{{ $1x = .Resize (printf "%dx q85" $width) }}{{ end }}
+{{ $2x := . }}{{ if gt .Width (mul $width 2) }}{{ $2x = .Resize (printf "%dx q85" (mul $width 2)) }}{{ end }}
+<img
+  src="{{ $1x.RelPermalink }}"
+  {{ if ne $1x.RelPermalink $2x.RelPermalink }}srcset="{{ $1x.RelPermalink }} 1x, {{ $2x.RelPermalink }} 2x"{{ end }}
+  width="{{ $1x.Width }}"
+  height="{{ $1x.Height }}"
+  class="card-img-top"
+  alt="{{ $m.name }}"
+  loading="lazy"
+/>
+{{ else }}
+<img src="{{ printf "photos/%s.jpg" $m.name | relURL }}" class="card-img-top" alt="{{ $m.name }}" />
+{{ end }}

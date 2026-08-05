@@ -2,24 +2,6 @@
   <div class="col-lg-10 mx-auto">
     <h2>Meet the Palomero Team</h2>
     <br />
-    <!-- Teresa Card -->
-    <div class="row">
-      <div class="card mx-2">
-        <div class="row">
-          <div class="col-auto">
-            <img src='{{ "assets/photos/TeresaPalomero.jpg" | relURL }}' class="card-img-top" alt="Dr. Teresa Palomero" />
-          </div>
-          <div class="col">
-            <div class="card-body">
-              <!-- Bio (rendered from content/teresa.md) -->
-              <div class="card-text" id="teresa-bio">{{ with site.GetPage "teresa" }}{{ .Content }}{{ end }}</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <br />
-    </div>
-    <br />
     <div id="dynamic-people-section">
       <!-- Team roster (data/team.yaml), grouped by role -->
       {{ range site.Data.team }}
@@ -27,22 +9,9 @@
       <div class="mb-5">
         <h3>{{ .group }}</h3>
         <div class="row">
+          {{ $wide := .wide }}
           {{ range sort .members "name" }}
-          <div class="col-sm-4 mx-0 px-2">
-            <div class="card">
-              <img src="{{ .photo | relURL }}" class="card-img-top" alt="{{ .name }}" />
-              <div class="card-body">
-                <p class="card-title"><strong>{{ .name }}{{ with .degree }}, {{ . }}{{ end }}</strong></p>
-                <p class="card-text">{{ .description }}</p>
-                {{ with .joined }}<p class="card-text"><small class="text-muted">Joined the lab in {{ . }}</small></p>{{ end }}
-                {{ with .focus }}<p class="card-text"><small class="text-muted">{{ . }}</small></p>{{ end }}
-                {{ with .fun_fact }}<p class="card-text"><small class="text-muted">{{ . }}</small></p>{{ end }}
-                {{ with .website }}<a class="card-link" href="{{ . }}" target="_blank" rel="noopener" aria-label="Website"
-                  ><i class="fa-solid fa-arrow-up-right-from-square"></i></a
-                >{{ end }}
-              </div>
-            </div>
-          </div>
+          {{ partial "person-card.html" (dict "member" . "wide" $wide) }}
           {{ end }}
         </div>
       </div>
