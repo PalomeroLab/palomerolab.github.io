@@ -127,58 +127,13 @@ The lab server never publishes the site. It is a preview machine only.
 
 ## Known problems
 
-### The Hugo versions differ between machines
-
-The lab server runs Hugo 0.123.7 from the Ubuntu package. Local machines and
-GitHub Actions run a much later version. The two versions disagree about how a
-template reads a data file:
-
-- Hugo 0.123 needs `site.Data.team`. It has no `hugo.Data`.
-- Hugo 0.156 and later prefer `hugo.Data.team` and warn about `site.Data`.
-
-Use `site.Data`. It works on both versions today. The warning is harmless.
-
-To remove the split, upgrade Hugo on the lab server. The Ubuntu package is too
-old. Install the official release instead.
-
-### An edit does not appear in the browser
-
-Hugo runs in Fast Render Mode. It skips pages that it believes did not change.
-It misses some edits to partials and data files. Restart the server with this
-flag:
-
-```bash
-hugo server --disableFastRender
-```
-
-### Port 1313 is busy
-
-An earlier server still runs. Stop it:
-
-```bash
-pkill -f 'hugo server'
-```
-
-### The lab server shows an old version of the site
-
-An earlier `python3 -m http.server` can still serve a stale `public/` directory
-on port 8000. That server does not reload. Stop it:
-
-```bash
-pkill -f http.server
-```
-
-Port 80 shows the static copy in `/var/www/html`. It changes only when you
-build into that directory.
-
-### A command over ssh exits with code 255
-
-`pkill -f 'hugo server'` matches the ssh command line that carries it. The
-command kills its own session. Match the process name instead:
-
-```bash
-pkill -x hugo
-```
+| Problem                  | Fix                                                 |
+| ------------------------ | --------------------------------------------------- |
+| Edit does not appear     | `hugo server --disableFastRender`                    |
+| Port 1313 busy           | `pkill -x hugo`                                      |
+| Stale site on port 8000  | `pkill -f http.server`                               |
+| ssh command exits 255    | `pkill -x hugo`, not `pkill -f 'hugo server'`        |
+| Lab server runs Hugo 0.123 | Use `site.Data`, not `hugo.Data`. Works on both    |
 
 ## Useful Hugo commands
 

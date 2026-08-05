@@ -8,35 +8,40 @@ disableKinds = ["taxonomy", "term"]
   phone = "(212) 851-5292"
   address = ["Irving Cancer Research Center", "Columbia University Irving Medical Center", "1130 Saint Nicholas Ave, Room 607", "New York, NY 10032"]
 
-[[menus.main]]
+# Page sections, in render order. Each entry drives one partial and one navbar
+# link. To reorder the page, move an entry. Fields:
+#   partial: layouts/partials/<partial>.html
+#   id:      the section id used by the navbar anchor (defaults to partial)
+#   name:    navbar label (omit to render the section without a navbar link)
+# Background shading alternates automatically, based on position in this list.
+[[params.sections]]
+  partial = "about"
   name = "About"
-  url = "#about"
-  weight = 1
 
-[[menus.main]]
+[[params.sections]]
+  partial = "team"
+  id = "people"
   name = "People"
-  url = "#people"
-  weight = 2
 
-[[menus.main]]
+[[params.sections]]
+  partial = "publications"
   name = "Publications"
-  url = "#publications"
-  weight = 3
 
-[[menus.main]]
+[[params.sections]]
+  partial = "projects"
+  name = "Projects"
+
+[[params.sections]]
+  partial = "join"
+  name = "Join Us"
+
+[[params.sections]]
+  partial = "extras"
   name = "Extras"
-  url = "#extras"
-  weight = 4
 
-[[menus.main]]
+[[params.sections]]
+  partial = "contact"
   name = "Contact"
-  url = "#contact"
-  weight = 5
-
-# [[menus.main]]
-#   name = "How-To"
-#   url = "https://palomerolab.github.io/how-to/"
-#   weight = 5
 
 [markup]
   [markup.goldmark]

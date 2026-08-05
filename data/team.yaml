@@ -1,13 +1,18 @@
+# required: name, photo, description
+# optional: degree, joined, focus, fun_fact, website
 - group: Postdoctoral Fellows
   members:
-    - name: Anouchka Laurent, PhD
+    - name: Anouchka Laurent
+      degree: PhD
       photo: assets/photos/Anouchka.jpg
       description: Dr. Laurent is a postdoctoral fellow working on PTCL in the Palomero Lab
-    - name: Laura Quevedo, PhD
+    - name: Laura Quevedo
+      degree: PhD
       photo: assets/photos/Laura.jpg
       description: Dr. Quevedo is a postdoctoral fellow in the Palomero Lab, working on implementing multi-omic and single-cell analysis to study PTCL using murine models and human samples
       website: https://twitter.com/lauriquepa
-    - name: Ruth Alonso Alonso, PhD
+    - name: Ruth Alonso Alonso
+      degree: PhD
       photo: assets/photos/Ruth.jpg
       description: Dr. Alonso is a postdoctoral fellow working on PTCL in the Palomero Lab
 - group: Instructors
@@ -16,39 +21,50 @@
   members: []
 - group: Research Staff
   members:
-    - name: Ryan D. Najac, BA
+    - name: Ryan D. Najac
+      degree: BA
       photo: assets/photos/Najac.jpg
       description: Ryan is a very good research technician
 - group: Past Members
   members:
-    - name: Dr. Wen-Hsuan Lin, MD, PhD
+    - name: Wen-Hsuan Lin
+      degree: MD, PhD
       photo: assets/photos/Wendy.jpg
       description: Dr. Wen-Hsuan Lin was a hematopathologist and physician-scientist in the Department of Pathology and Cell Biology who worked on PTCL in the Palomero Lab
-    - name: Kalay Bertulfo, MS
+    - name: Kalay Bertulfo
+      degree: MS
       photo: assets/photos/Kalay.jpg
       description: Kalay Bertulfo was a PhD student with the Department of Biology who worked on PTCL in the Palomero Lab
-    - name: Hannah Miller, BS
+    - name: Hannah Miller
+      degree: BS
       photo: assets/photos/Hannah.jpg
       description: Hannah was the Palomero lab manager and a research technician
-    - name: Cindy Ma, MPH
+    - name: Cindy Ma
+      degree: MPH
       photo: assets/photos/Cindy.jpg
       description: Cindy was a research technician
-    - name: Bobby Shih, PhD
+    - name: Bobby Shih
+      degree: PhD
       photo: assets/photos/Bobby.jpg
       description: Bobby Shih received his PhD from the Integrated Cellular, Molecular and Biomedical Studies Program at Columbia University working on PTCL in the Palomero Lab
       website: http://www.bobbyshih.net
-    - name: Jose Rodrigez Cortes, PhD
+    - name: Jose Rodriguez Cortes
+      degree: PhD
       photo: assets/photos/Jose.jpg
       description: Dr. Cortes was a postdoctoral fellow who worked on PTCL in the Palomero Lab
-    - name: Robert Albero Gallego, PhD
+    - name: Robert Albero Gallego
+      degree: PhD
       photo: assets/photos/Robert.jpg
       description: Dr. Albero Gallego was a computational postdoctoral fellow in the Palomero Lab
-    - name: Christine Moon, PhD
+    - name: Christine Moon
+      degree: PhD
       photo: assets/photos/Christine.jpg
       description: Dr. Moon was an MSTP student in the Palomero Group
-    - name: Adam Mackey, BS
+    - name: Adam Mackey
+      degree: BS
       photo: assets/photos/Adam.jpg
       description: Adam was the lab manager and a research technician
-    - name: Clara Reglero Gomez, PhD
+    - name: Clara Reglero Gomez
+      degree: PhD
       photo: assets/photos/Clara.jpg
       description: Dr. Reglero Gomez was a postdoctoral fellow who worked on PTCL in the Palomero Lab

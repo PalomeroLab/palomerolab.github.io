@@ -36,11 +36,10 @@
   <body id="page-top">
     {{ partial "navbar.html" . }}
     {{ partial "banner.html" . }}
-    {{ partial "about.html" . }}
-    {{ partial "team.html" . }}
-    {{ partial "publications.html" . }}
-    {{ partial "extras.html" . }}
-    {{ partial "contact.html" . }}
+    <!-- Sections come from params.sections in hugo.toml; backgrounds alternate by position -->
+    {{ range $i, $s := site.Params.sections }}
+    <section id="{{ $s.id | default $s.partial }}" class="{{ cond (eq (mod $i 2) 0) "py-5" "bg-light py-5" }}">{{ partial (printf "%s.html" $s.partial) $ }}</section>
+    {{ end }}
     {{ partial "footer.html" . }}
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
