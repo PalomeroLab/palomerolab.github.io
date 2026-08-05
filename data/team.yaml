@@ -10,29 +10,25 @@
     - name: Ruth Alonso Alonso, PhD
       photo: assets/photos/Ruth.jpg
       description: Dr. Alonso is a postdoctoral fellow working on PTCL in the Palomero Lab
-- group: Instructors
+- group: Research Staff
+  members:
+    - name: Ryan D. Najac, BA
+      photo: assets/photos/Najac.jpg
+      description: Ryan is a very good research technician
+- group: Past Members
   members:
     - name: Dr. Wen-Hsuan Lin, MD, PhD
       photo: assets/photos/Wendy.jpg
       description: Dr. Wen-Hsuan Lin is a hematopathologist and physician-scientist in the Department of Pathology and Cell Biology working on PTCL in the Palomero Lab
-- group: Students
-  members:
     - name: Kalay Bertulfo, MS
       photo: assets/photos/Kalay.jpg
       description: Kalay Bertulfo is a PhD student with the Department of Biology working on PTCL in the Palomero Lab
-- group: Research Staff
-  members:
     - name: Hannah Miller, BS
       photo: assets/photos/Hannah.jpg
       description: Hannah is the Palomero lab manager and a research technician
     - name: Cindy Ma, MPH
       photo: assets/photos/Cindy.jpg
       description: Cindy is a research technician
-    - name: Ryan D. Najac, BA
-      photo: assets/photos/Najac.jpg
-      description: Ryan is a very good research technician
-- group: Past Members
-  members:
     - name: Bobby Shih, PhD
       photo: assets/photos/Bobby.jpg
       description: Bobby Shih received his PhD from the Integrated Cellular, Molecular and Biomedical Studies Program at Columbia University working on PTCL in the Palomero Lab

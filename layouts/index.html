@@ -47,7 +47,13 @@
     <script src="https://cdn.jsdelivr.net/npm/startbootstrap-scrolling-nav@5.0.6/dist/js/scripts.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/rdnajac/js/pubmed.js"></script>
     <script>
-      initializePubMedSection("Teresa Palomero", "publications-section");
+      // pubmed.js fetches MAX_NUM_PUBS items and takes no count argument, so trim after it renders
+      const NUM_PUBS_SHOWN = 5;
+      initializePubMedSection("Teresa Palomero", "publications-section").then(() => {
+        document.querySelectorAll("#publications-section li").forEach((li, i) => {
+          if (i >= NUM_PUBS_SHOWN) li.remove();
+        });
+      });
     </script>
     <!-- TODO: Generate publication list for each lab member -->
   </body>
