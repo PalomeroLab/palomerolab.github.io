@@ -18,6 +18,24 @@ footer.bg-dark {
   background-size: cover;
 }
 
+/* Team photos fill the width of the card. object-fit crops the overflow, so a
+   photo keeps its proportions whatever shape the file has. aspect-ratio holds
+   the space before the file arrives, which stops the page from jumping. */
+.card-img-top {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  object-position: center 20%;
+}
+
+/* The wide card puts the photo beside the text. It keeps a portrait shape and
+   stops growing on a large screen. */
+.card .col-auto .card-img-top {
+  width: 250px;
+  max-width: 100%;
+  aspect-ratio: 3 / 4;
+}
+
 .publication-list {
   padding-bottom: 1rem;
 }
