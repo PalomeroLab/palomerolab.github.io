@@ -16,6 +16,7 @@
     - name: Teresa Palomero
       suffix: PhD
       bio: teresa
+      x: teresa_palomero
       cv: assets/cv/TeresaPalomero-CV.pdf
 - group: Postdoctoral Fellows
   members:
