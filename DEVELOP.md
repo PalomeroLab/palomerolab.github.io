@@ -8,6 +8,7 @@ live in `layouts/`.
 - `hugo` (extended version)
 - `prettier`, for `make fmt`
 - `ssh` access to `palomerolab-server`, for a preview on the lab network
+- `rsync`, for `make sync` and `make deploy-on-lab-server`
 
 ## Quick start
 
@@ -15,6 +16,7 @@ live in `layouts/`.
 make dev      # serve at http://localhost:1313/
 make build    # build into public/
 make fmt      # format with Prettier
+make sync     # copy the built site to the Desktop folder
 make help     # list all targets
 ```
 
@@ -23,7 +25,7 @@ make help     # list all targets
 | Path                 | Contents                                              |
 | -------------------- | ----------------------------------------------------- |
 | `layouts/index.html` | The home page. It calls one partial for each section.  |
-| `layouts/partials/`  | One file for each section: banner, about, team, and so on. |
+| `layouts/partials/`  | One file for each section, named after it: `people.html`. |
 | `content/`           | Prose fragments in Markdown. Templates pull them in.   |
 | `data/team.yaml`     | The team roster. Edit this file to change the people.  |
 | `static/`            | Files that Hugo copies without a change: photos, CSS.  |
@@ -35,17 +37,18 @@ make help     # list all targets
 ### Add or remove a team member
 
 Edit `data/team.yaml`. Each group has a `group` name and a list of `members`.
-Each member needs `name`, `photo`, and `description`. The `website` field is
-optional. If you add a `website`, the card shows a link icon.
+Each member needs `name` and `description`. The file lists the optional fields
+at the top. Each of `orcid`, `github`, `x`, `email`, `phone`, `cv`, and
+`website` adds an icon link to the card.
 
-Put the photo in `static/assets/photos/`. The `photo` field must give the path
-without the `static/` prefix.
+Put the photo in `assets/photos/`, named after the member, for example
+`Ryan D. Najac.jpg`. The card finds it without a `photo` field.
 
 ### Change the prose
 
 The files in `content/` are fragments, not pages. Templates read them with
-`site.GetPage`. For example, `layouts/partials/team.html` reads
-`content/teresa.md`.
+`site.GetPage`. For example, `layouts/partials/people.html` reads
+`content/teresa.md`, because her entry in `data/team.yaml` names it.
 
 Each fragment starts with this front matter:
 
@@ -72,50 +75,35 @@ Put the image in `static/assets/extras/`. Then link it from
 ### Change the layout
 
 Edit the partial for the section in `layouts/partials/`. To add a section,
-write a new partial. Then call it from `layouts/index.html`.
+write `layouts/partials/<name>.html`, then add a `[[menus.main]]` entry with
+`url = "#<name>"` in `hugo.toml`. The entry gives the navbar link and the
+section. A menu entry with a url that does not start with `#` links to a page
+of its own, as `/research/` does.
 
 ## The lab server
 
-The `make` targets are local only. The server is a separate machine with its
-own copy of the site at `~/Public/palomerolab.org`.
+Apache on the lab server shows the site at http://156.145.233.38/ for the lab
+network. It does not publish the site.
 
-The server has two ways to show the site. Both are previews for the lab
-network. Neither one publishes the site.
-
-### Live reload on port 1313
-
-Use this while you work. Hugo rebuilds after each change.
+Build here, then copy the result:
 
 ```bash
-cd ~/Public/palomerolab.org
-hugo server --bind 0.0.0.0 --baseURL http://156.145.233.38/
+make deploy-on-lab-server
 ```
 
-The address is http://156.145.233.38:1313/. Press Ctrl-C to stop the server.
+The target builds with the lab address, then copies `public/` to
+`/var/www/html` on the server. It keeps the `CNAME` file and removes everything
+else that the build did not write. The server runs no Hugo, and it needs no
+copy of this repository.
 
-`--bind 0.0.0.0` is necessary. Without it, Hugo listens on 127.0.0.1 and no
-other machine can reach the site. `--baseURL` fixes the links and the live
-reload script, which otherwise point at `localhost`.
+The build in `public/` carries the lab address afterward. Run `make build`
+before you look at that directory again.
 
-### Static copy on port 80
-
-Apache serves `/var/www/html` at http://156.145.233.38/, with no port number.
-Use this to show the site to somebody. There is no live reload.
-
-The directory belongs to root. Change the owner one time:
+The Apache directory belongs to root. Change the owner one time:
 
 ```bash
-sudo chown -R palomerolab:palomerolab /var/www/html
+ssh palomerolab-server 'sudo chown -R palomerolab:palomerolab /var/www/html'
 ```
-
-After that, each build needs no sudo:
-
-```bash
-cd ~/Public/palomerolab.org
-hugo --gc --minify --baseURL http://156.145.233.38/ --destination /var/www/html
-```
-
-Add `--cleanDestinationDir` if you deleted a page and it must disappear.
 
 ## Publication
 
@@ -133,7 +121,7 @@ The lab server never publishes the site. It is a preview machine only.
 | Port 1313 busy           | `pkill -x hugo`                                      |
 | Stale site on port 8000  | `pkill -f http.server`                               |
 | ssh command exits 255    | `pkill -x hugo`, not `pkill -f 'hugo server'`        |
-| Lab server runs Hugo 0.123 | Templates use `hugo.Data`, which needs 0.156. Upgrade the server |
+| Lab server shows an old site | `make deploy-on-lab-server`             |
 
 ## Useful Hugo commands
 
