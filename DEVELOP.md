@@ -60,6 +60,15 @@ build:
 Keep it. It tells Hugo not to build the fragment into a standalone page. If you
 remove it, Hugo builds a page at `/teresa/` and warns that no template matches.
 
+### Add a photo to the Extras section
+
+Put the image in `static/assets/extras/`. Then link it from
+`content/extras.md` without the `static/` prefix:
+
+```markdown
+![Lab outing, summer 2026](/assets/extras/outing-2026-summer.jpg)
+```
+
 ### Change the layout
 
 Edit the partial for the section in `layouts/partials/`. To add a section,
