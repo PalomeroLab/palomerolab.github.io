@@ -1,3 +1,9 @@
+---
+build:
+  render: never
+  list: never
+---
+
 # About our group
 
 Peripheral T-cell lymphomas (PTCLs) constitute a heterogeneous group of

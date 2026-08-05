@@ -1,3 +1,9 @@
+---
+build:
+  render: never
+  list: never
+---
+
 # Teresa Palomero, PhD
 
 <!-- <a href="https://twitter.com/teresa_palomero" target="_blank"><i class="bi bi-twitter-x"></i></a> -->
