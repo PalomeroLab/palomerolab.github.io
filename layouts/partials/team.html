@@ -27,7 +27,7 @@
       <div class="mb-5">
         <h3>{{ .group }}</h3>
         <div class="row">
-          {{ range .members }}
+          {{ range sort .members "name" }}
           <div class="col-sm-4 mx-0 px-2">
             <div class="card">
               <img src="{{ .photo | relURL }}" class="card-img-top" alt="{{ .name }}" />

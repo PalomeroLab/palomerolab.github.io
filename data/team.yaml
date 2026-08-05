@@ -1,5 +1,6 @@
 # required: name, photo, description
 # optional: degree, joined, focus, fun_fact, website
+# Groups render in the order below. Members render in alphabetical order.
 - group: Postdoctoral Fellows
   members:
     - name: Anouchka Laurent
@@ -17,14 +18,14 @@
       description: Dr. Alonso is a postdoctoral fellow working on PTCL in the Palomero Lab
 - group: Instructors
   members: []
-- group: Students
-  members: []
 - group: Research Staff
   members:
     - name: Ryan D. Najac
       degree: BA
       photo: assets/photos/Najac.jpg
       description: Ryan is a very good research technician
+- group: Students
+  members: []
 - group: Past Members
   members:
     - name: Wen-Hsuan Lin
