@@ -2,16 +2,44 @@
 
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
-The website of the Palomero Lab. It is built with [Hugo](https://gohugo.io/) and
-deployed to GitHub Pages by GitHub Actions.
+The website of the Palomero Lab, at https://www.palomerolab.org/.
 
-Most changes need no HTML and no Go template. Edit one file, run `make fmt`, and
-commit.
+You can make most changes here on GitHub, in the browser. You need no software
+on your computer, and you need to write no HTML.
 
-## Add or remove a lab member
+## How to edit a file
 
-Edit `data/team.yaml`. Each group has a `group` name and a list of `members`.
-The comments at the top of the file list every field.
+1. Open the file in the list below.
+2. Click the pencil at the top right of the file.
+3. Make the change.
+4. Click **Commit changes**, write one line about what you did, and commit.
+
+The site rebuilds itself. Your change appears at https://www.palomerolab.org/
+about a minute later. Watch the **Actions** tab for a green check. A red X means
+the site did not rebuild, and the change is not live.
+
+## What to edit
+
+| To change                      | Open this file                 |
+| ------------------------------ | ------------------------------ |
+| Lab members, and their links   | `data/team.yaml`               |
+| About our group                | `content/sections/about.md`    |
+| Ongoing Projects               | `content/sections/projects.md` |
+| Join Us                        | `content/sections/join.md`     |
+| Extras, for photos of the lab  | `content/sections/extras.md`   |
+| Teresa Palomero's bio          | `content/sections/teresa.md`   |
+| The Research page              | `content/research.md`          |
+| The alumni list                | `assets/alumni.csv`            |
+| Tagline, phone number, address | `hugo.toml`                    |
+
+The `.md` files are Markdown. Write plain text. `**bold**` makes bold, and
+`[text](https://example.com)` makes a link.
+
+## How to add a lab member
+
+Open `data/team.yaml` and copy an entry that is already there. Keep the dashes
+and the indentation exactly as they are, because the spacing carries the
+meaning in this kind of file.
 
 ```yaml
 - group: Research Staff
@@ -23,77 +51,38 @@ The comments at the top of the file list every field.
       github: rdnajac
 ```
 
-`name` and `description` are the only fields a member needs. Each of `orcid`,
-`github`, `x`, `email`, `phone`, `cv`, and `website` adds an icon link to the
-card.
+A member needs `name` and `description`. Everything else is optional:
 
-Groups appear in the order of the file. Members sort by name.
+| Field                                                     | What it does                           |
+| --------------------------------------------------------- | -------------------------------------- |
+| `suffix`                                                  | The degree after the name, such as PhD |
+| `orcid`, `github`, `x`, `email`, `phone`, `cv`, `website` | Each one adds an icon link to the card |
 
-## Add a photo
+To move somebody to Past Members, cut their entry and paste it under that
+group. Groups appear in the order of the file, and members sort by name.
 
-Put the file in `assets/photos/`, named after the member, for example
-`assets/photos/Ryan D. Najac.jpg`. The card finds it with no `photo` field.
+## How to add a photo
 
-Photos are 250x250 thumbnails. The card crops whatever shape the file has, so
-nothing stretches, but a file smaller than 250px looks soft. The build warns
-when a member has no photo.
+1. Open the `assets/photos` folder.
+2. Click **Add file**, then **Upload files**.
+3. Name the file after the member, exactly as the name appears in
+   `data/team.yaml`, for example `Ryan D. Najac.jpg`.
 
-## Change the text of a section
+The card finds the photo by that name. Nothing else to edit.
 
-| Section                | File                           |
-| ---------------------- | ------------------------------ |
-| About our group        | `content/sections/about.md`    |
-| Ongoing Projects       | `content/sections/projects.md` |
-| Join Us                | `content/sections/join.md`     |
-| Extras                 | `content/sections/extras.md`   |
-| Teresa Palomero's bio  | `content/sections/teresa.md`   |
-| Research, its own page | `content/research.md`          |
+A photo should be a square about 250 pixels wide. A larger one still works,
+because the card crops it, but it makes the page slower. A much smaller one
+looks blurry.
 
-These are plain Markdown. The files in `content/sections/` need no front matter.
+## If something looks wrong
 
-## Change the tagline, phone, or address
+Every change is saved forever, and any change can be undone. Open the
+**Commits** list, find the change, and revert it. Nothing you do here can lose
+the earlier version of the site.
 
-Edit `[params]` in `hugo.toml`.
+Ask Ryan if a change does not appear, or if the Actions tab shows a red X.
 
-## Add a section
+## For developers
 
-Write `layouts/partials/<name>.html`, then add a menu entry in `hugo.toml`:
-
-```toml
-[[menus.main]]
-  name = "Alumni"
-  url = "#alumni"
-  weight = 9
-```
-
-The entry gives both the navbar link and the section on the page. A `url` that
-does not start with `#` links to a page of its own, as `/research/` does.
-
-## Publish
-
-A push to `main` builds the site and deploys it to GitHub Pages. A pull request
-builds it without deploying.
-
-To update the preview on the lab network at http://156.145.233.38/:
-
-```bash
-make deploy-on-lab-server
-```
-
-It builds here and copies the result. The server runs no Hugo.
-
-## Local development
-
-```bash
-make dev      # serve at http://localhost:1313/
-make build    # build into public/
-make fmt      # format with Prettier. Run before each commit
-make help     # list every target
-```
-
-The first `make fmt` installs Prettier and its Go template plugin with npm.
-Prettier breaks the templates without that plugin, so always format through
-`make fmt`, never through a Prettier on your `PATH`.
-
-[DEVELOP.md](DEVELOP.md) covers the rest: the repository layout, how the
-templates find the content, the lab server, and the known problems.
+[DEVELOP.md](DEVELOP.md) covers the local setup: Hugo, the make targets, the
+formatter, the templates, and the preview server on the lab network.

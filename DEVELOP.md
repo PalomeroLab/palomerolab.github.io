@@ -68,23 +68,17 @@ from `PATH`. The first run installs it.
 | `hugo.toml`          | Site configuration.                                       |
 | `public/`            | Build output. Do not edit. Do not commit.                 |
 
-## How to make common changes
+## How the templates find the content
 
-### Add or remove a team member
+README.md covers the day to day edits: the roster, the prose, the photos. This
+section covers what a template does with them.
 
-Edit `data/team.yaml`. Each group has a `group` name and a list of `members`.
-Each member needs `name` and `description`. The file lists the optional fields
-at the top. Each of `orcid`, `github`, `x`, `email`, `phone`, `cv`, and
-`website` adds an icon link to the card.
-
-Put the photo in `assets/photos/`, named after the member, for example
-`Ryan D. Najac.jpg`. The card finds it without a `photo` field.
-
-### Change the prose
+### The section fragments
 
 The files in `content/sections/` are fragments, not pages. Templates read them
 with `site.GetPage`. For example, `layouts/partials/people.html` reads
-`content/sections/teresa.md`, because her entry in `data/team.yaml` names it.
+`content/sections/teresa.md`, because her entry in `data/team.yaml` names it in
+a `bio` field.
 
 A fragment needs no front matter. `content/sections/_index.md` carries a
 cascade that keeps every file in the directory off the site:
@@ -97,10 +91,32 @@ cascade:
 ```
 
 A Markdown file that belongs somewhere else, such as `content/research.md`,
-builds a page of its own. The build warns when a file outside `sections/`
-carries no title, because that is the sign of a fragment in the wrong place.
+builds a page of its own through `layouts/_default/single.html`. The build
+warns when a file outside `sections/` carries no title, because that is the
+sign of a fragment in the wrong place.
 
-### Add a photo to the Extras section
+### The team cards
+
+`layouts/partials/people.html` builds every card, including the wide one for
+the Principal Investigator, which the `wide` field on a group sets. It looks
+for a photo in `assets/photos/` under the member name, in jpg, jpeg, png, and
+webp order, and it warns when it finds none. A `photo` field overrides that
+guess, with a path under `assets/`.
+
+### The sections and the navbar
+
+The `[[menus.main]]` entries in `hugo.toml` are the list of sections.
+`layouts/index.html` renders one `<section>` for each entry whose url starts
+with `#`, and the url names the partial: `#people` renders
+`layouts/partials/people.html`. Backgrounds alternate by position. An entry
+whose url does not start with `#` links to a page of its own, as `/research/`
+does, and the navbar puts the home page in front of an anchor when it renders
+on such a page.
+
+To add a section, write `layouts/partials/<name>.html`, then add the menu
+entry.
+
+### The Extras photos
 
 Put the image in `static/assets/extras/`. Then link it from
 `content/sections/extras.md` without the `static/` prefix:
@@ -108,14 +124,6 @@ Put the image in `static/assets/extras/`. Then link it from
 ```markdown
 ![Lab outing, summer 2026](/assets/extras/outing-2026-summer.jpg)
 ```
-
-### Change the layout
-
-Edit the partial for the section in `layouts/partials/`. To add a section,
-write `layouts/partials/<name>.html`, then add a `[[menus.main]]` entry with
-`url = "#<name>"` in `hugo.toml`. The entry gives the navbar link and the
-section. A menu entry with a url that does not start with `#` links to a page
-of its own, as `/research/` does.
 
 ## The lab server
 
