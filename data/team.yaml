@@ -23,17 +23,29 @@
   members:
     - name: Dr. Wen-Hsuan Lin, MD, PhD
       photo: assets/photos/Wendy.jpg
-      description: Dr. Wen-Hsuan Lin is a hematopathologist and physician-scientist in the Department of Pathology and Cell Biology working on PTCL in the Palomero Lab
+      description: Dr. Wen-Hsuan Lin was a hematopathologist and physician-scientist in the Department of Pathology and Cell Biology who worked on PTCL in the Palomero Lab
     - name: Kalay Bertulfo, MS
       photo: assets/photos/Kalay.jpg
-      description: Kalay Bertulfo is a PhD student with the Department of Biology working on PTCL in the Palomero Lab
+      description: Kalay Bertulfo was a PhD student with the Department of Biology who worked on PTCL in the Palomero Lab
     - name: Hannah Miller, BS
       photo: assets/photos/Hannah.jpg
-      description: Hannah is the Palomero lab manager and a research technician
+      description: Hannah was the Palomero lab manager and a research technician
     - name: Cindy Ma, MPH
       photo: assets/photos/Cindy.jpg
-      description: Cindy is a research technician
+      description: Cindy was a research technician
     - name: Bobby Shih, PhD
       photo: assets/photos/Bobby.jpg
       description: Bobby Shih received his PhD from the Integrated Cellular, Molecular and Biomedical Studies Program at Columbia University working on PTCL in the Palomero Lab
       website: http://www.bobbyshih.net
+    - name: Jose Rodrigez Cortes, PhD
+      photo: assets/photos/Jose.jpg
+      description: Dr. Cortes was a postdoctoral fellow who worked on PTCL in the Palomero Lab
+    - name: Robert Albero Gallego, PhD
+      photo: assets/photos/Robert.jpg
+      description: Dr. Albero Gallego was a computational postdoctoral fellow in the Palomero Lab
+    - name: Christine Moon, PhD
+      photo: assets/photos/Christine.jpg
+      description: Dr. Moon was an MSTP student in the Palomero Group
+    - name: Adam Mackey, BS
+      photo: assets/photos/Adam.jpg
+      description: Adam was the lab manager and a research technician
