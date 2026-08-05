@@ -8,44 +8,52 @@ disableKinds = ["taxonomy", "term"]
   phone = "(212) 851-5292"
   address = ["Irving Cancer Research Center", "Columbia University Irving Medical Center", "1130 Saint Nicholas Ave, Room 607", "New York, NY 10032"]
 
-# Page sections, in render order. Each entry drives one partial and one navbar
-# link. To reorder the page, move an entry. Fields:
-#   partial: layouts/partials/<partial>.html
-#   id:      the section id used by the navbar anchor (defaults to partial)
-#   name:    navbar label (omit to render the section without a navbar link)
-# Background shading alternates automatically, based on position in this list.
-[[params.sections]]
-  partial = "about"
+# The menu is the list of sections, in render order. Each entry gives one
+# navbar link and one section on the page. The url names the section: "#people"
+# renders layouts/partials/people.html inside <section id="people">. To add a
+# section, write the partial and add an entry here. To reorder the page, change
+# the weights. Background shading alternates automatically.
+[[menus.main]]
   name = "About"
+  url = "#about"
+  weight = 1
 
-[[params.sections]]
-  partial = "research"
+# A url that does not start with "#" links to a page of its own. The home page
+# skips it.
+[[menus.main]]
   name = "Research"
+  url = "/research/"
+  weight = 2
 
-[[params.sections]]
-  partial = "team"
-  id = "people"
+[[menus.main]]
   name = "People"
+  url = "#people"
+  weight = 3
 
-[[params.sections]]
-  partial = "publications"
+[[menus.main]]
   name = "Publications"
+  url = "#publications"
+  weight = 4
 
-[[params.sections]]
-  partial = "projects"
+[[menus.main]]
   name = "Projects"
+  url = "#projects"
+  weight = 5
 
-[[params.sections]]
-  partial = "join"
+[[menus.main]]
   name = "Join Us"
+  url = "#join"
+  weight = 6
 
-[[params.sections]]
-  partial = "extras"
+[[menus.main]]
   name = "Extras"
+  url = "#extras"
+  weight = 7
 
-[[params.sections]]
-  partial = "contact"
+[[menus.main]]
   name = "Contact"
+  url = "#contact"
+  weight = 8
 
 [markup]
   [markup.goldmark]

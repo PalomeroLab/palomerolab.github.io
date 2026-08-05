@@ -15,9 +15,9 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ms-auto">
-        {{ range site.Params.sections }}{{ if .name }}
-        <li class="nav-item"><a class="nav-link" href="#{{ default .partial .id }}">{{ .name }}</a></li>
-        {{ end }}{{ end }}
+        {{ range site.Menus.main }}
+        <li class="nav-item"><a class="nav-link" href="{{ .URL }}">{{ .Name }}</a></li>
+        {{ end }}
       </ul>
     </div>
   </div>

@@ -36,9 +36,14 @@
   <body id="page-top">
     {{ partial "navbar.html" . }}
     {{ partial "banner.html" . }}
-    <!-- Sections come from params.sections in hugo.toml; backgrounds alternate by position -->
-    {{ range $i, $s := site.Params.sections }}
-    <section id="{{ $s.id | default $s.partial }}" class="{{ cond (eq (mod $i 2) 0) "py-5" "bg-light py-5" }}">{{ partial (printf "%s.html" $s.partial) $ }}</section>
+    <!-- One section for each menu entry in hugo.toml; backgrounds alternate by position -->
+    {{ $i := 0 }}
+    {{ range site.Menus.main }}
+    {{ if hasPrefix .URL "#" }}
+    {{ $id := strings.TrimPrefix "#" .URL }}
+    <section id="{{ $id }}" class="{{ cond (eq (mod $i 2) 0) "py-5" "bg-light py-5" }}">{{ partial (printf "%s.html" $id) $ }}</section>
+    {{ $i = add $i 1 }}
+    {{ end }}
     {{ end }}
     {{ partial "footer.html" . }}
 
