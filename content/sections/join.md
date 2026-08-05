@@ -1,9 +1,3 @@
----
-build:
-  render: never
-  list: never
----
-
 # Join Us!
 
 **Postdoctoral Fellows** We welcome inquiries from postdoctoral candidates

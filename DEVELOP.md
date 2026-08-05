@@ -82,27 +82,28 @@ Put the photo in `assets/photos/`, named after the member, for example
 
 ### Change the prose
 
-The files in `content/` are fragments, not pages. Templates read them with
-`site.GetPage`. For example, `layouts/partials/people.html` reads
-`content/teresa.md`, because her entry in `data/team.yaml` names it.
+The files in `content/sections/` are fragments, not pages. Templates read them
+with `site.GetPage`. For example, `layouts/partials/people.html` reads
+`content/sections/teresa.md`, because her entry in `data/team.yaml` names it.
 
-Each fragment starts with this front matter:
+A fragment needs no front matter. `content/sections/_index.md` carries a
+cascade that keeps every file in the directory off the site:
 
 ```yaml
----
-build:
-  render: never
-  list: never
----
+cascade:
+  build:
+    render: never
+    list: never
 ```
 
-Keep it. It tells Hugo not to build the fragment into a standalone page. If you
-remove it, Hugo builds a page at `/teresa/` and warns that no template matches.
+A Markdown file that belongs somewhere else, such as `content/research.md`,
+builds a page of its own. The build warns when a file outside `sections/`
+carries no title, because that is the sign of a fragment in the wrong place.
 
 ### Add a photo to the Extras section
 
 Put the image in `static/assets/extras/`. Then link it from
-`content/extras.md` without the `static/` prefix:
+`content/sections/extras.md` without the `static/` prefix:
 
 ```markdown
 ![Lab outing, summer 2026](/assets/extras/outing-2026-summer.jpg)

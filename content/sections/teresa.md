@@ -1,9 +1,3 @@
----
-build:
-  render: never
-  list: never
----
-
 Dr. Palomero is a Professor of Pathology and Cell Biology at the Institute for
 Cancer Genetics at Columbia University Irving Medical Center (CUIMC). She
 trained at the University of Oviedo (Spain) and completed postdoctoral

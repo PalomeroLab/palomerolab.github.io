@@ -7,7 +7,7 @@
 # orcid takes the bare identifier, for example 0000-0002-1825-0097
 # github and x take the bare handle, without the @
 # cv takes a path under static/, without the static/ prefix, for example assets/cv/najac.pdf
-# bio names a fragment in content/. It replaces description, for a longer text.
+# bio names a fragment in content/sections/. It replaces description, for a longer text.
 # wide, on a group, gives its cards the full width with the photo beside the text.
 # Groups render in the order below. Members render in alphabetical order.
 - group: Principal Investigator
@@ -15,7 +15,7 @@
   members:
     - name: Teresa Palomero
       suffix: PhD
-      bio: teresa
+      bio: sections/teresa
       x: teresa_palomero
       cv: assets/cv/TeresaPalomero-CV.pdf
 - group: Postdoctoral Fellows
