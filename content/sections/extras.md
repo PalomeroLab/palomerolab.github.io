@@ -1,9 +1,3 @@
----
-build:
-  render: never
-  list: never
----
-
 # Extras
 
 <!--

@@ -1,9 +1,3 @@
----
-build:
-  render: never
-  list: never
----
-
 # Ongoing Projects
 
 ## Targeting ID2 in Peripheral T-Cell Lymphoma
