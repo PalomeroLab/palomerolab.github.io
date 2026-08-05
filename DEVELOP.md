@@ -133,7 +133,7 @@ The lab server never publishes the site. It is a preview machine only.
 | Port 1313 busy           | `pkill -x hugo`                                      |
 | Stale site on port 8000  | `pkill -f http.server`                               |
 | ssh command exits 255    | `pkill -x hugo`, not `pkill -f 'hugo server'`        |
-| Lab server runs Hugo 0.123 | Use `site.Data`, not `hugo.Data`. Works on both    |
+| Lab server runs Hugo 0.123 | Templates use `hugo.Data`, which needs 0.156. Upgrade the server |
 
 ## Useful Hugo commands
 

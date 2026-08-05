@@ -4,7 +4,7 @@
     <br />
     <div id="dynamic-people-section">
       <!-- Team roster (data/team.yaml), grouped by role -->
-      {{ range site.Data.team }}
+      {{ range hugo.Data.team }}
       {{ $wide := .wide }}
       {{ if .members }}
       <div class="mb-5">
