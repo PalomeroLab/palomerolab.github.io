@@ -31,14 +31,18 @@ make help     # list all targets
 | `name`     | Full name, with the degree suffix as the person uses it.                                                                                  |
 | `position` | Current position and institution, outside this lab.                                                                                       |
 
-The file sits in `assets/`, not in `data/`, because Hugo reads no CSV from
-`data/`. A template gets the rows with `transform.Unmarshal`:
+The Past Members group in the People section ends with a link to the file, at
+`/alumni.csv`. `layouts/partials/people.html` publishes it with
+`resources.Get`, which is why the file sits in `assets/`.
+
+It cannot go in `data/`. Hugo reads no CSV from that directory. To build a
+table from the rows one day, read them with `transform.Unmarshal`:
 
 ```go-html-template
 {{ $alumni := resources.Get "alumni.csv" | transform.Unmarshal }}
 ```
 
-Keep the file valid CSV. A comment line is not valid CSV.
+Keep the file valid CSV, and keep the comment lines out of it.
 
 ## Formatting
 
@@ -59,7 +63,7 @@ from `PATH`. The first run installs it.
 | `layouts/partials/`  | One file for each section, named after it: `people.html`. |
 | `content/`           | Prose fragments in Markdown. Templates pull them in.      |
 | `data/team.yaml`     | The team roster. Edit this file to change the people.     |
-| `assets/alumni.csv`  | Alumni, 2005 to now. No template reads it yet.            |
+| `alumni.csv`         | Alumni, 2005 to now. Hugo ignores it there.               |
 | `static/`            | Files that Hugo copies without a change: photos, CSS.     |
 | `hugo.toml`          | Site configuration.                                       |
 | `public/`            | Build output. Do not edit. Do not commit.                 |

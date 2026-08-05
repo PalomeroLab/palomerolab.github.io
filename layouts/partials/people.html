@@ -109,6 +109,11 @@
                 </div>
               {{ end }}
             </div>
+            {{ if eq .group "Past Members" }}
+              {{ with resources.Get "alumni.csv" }}
+                <p><a href="{{ .RelPermalink }}">View our roster</a></p>
+              {{ end }}
+            {{ end }}
           </div>
         {{ end }}
       {{ end }}
