@@ -65,24 +65,48 @@ remove it, Hugo builds a page at `/teresa/` and warns that no template matches.
 Edit the partial for the section in `layouts/partials/`. To add a section,
 write a new partial. Then call it from `layouts/index.html`.
 
-## Preview on the lab server
+## The lab server
 
-`make dev` is enough for most work. Use the lab server when you must show the
-site to somebody else on the lab network.
+The `make` targets are local only. The server is a separate machine with its
+own copy of the site at `~/Public/palomerolab.org`.
+
+The server has two ways to show the site. Both are previews for the lab
+network. Neither one publishes the site.
+
+### Live reload on port 1313
+
+Use this while you work. Hugo rebuilds after each change.
 
 ```bash
-make sync-dry   # show what the sync will copy and delete
-make sync       # copy layouts, content, data, static, and hugo.toml
-make preview    # sync, then serve at http://156.145.233.38:1313/
+cd ~/Public/palomerolab.org
+hugo server --bind 0.0.0.0 --baseURL http://156.145.233.38/
 ```
 
-`make preview` holds your terminal. Press Ctrl-C to stop the server.
+The address is http://156.145.233.38:1313/. Press Ctrl-C to stop the server.
 
-The sync uses `rsync --delete`. The server copy becomes an exact copy of your
-local files. If somebody edited the site on the server, the sync deletes that
-work. Run `make sync-dry` first.
+`--bind 0.0.0.0` is necessary. Without it, Hugo listens on 127.0.0.1 and no
+other machine can reach the site. `--baseURL` fixes the links and the live
+reload script, which otherwise point at `localhost`.
 
-You do not need a commit or a push for a preview.
+### Static copy on port 80
+
+Apache serves `/var/www/html` at http://156.145.233.38/, with no port number.
+Use this to show the site to somebody. There is no live reload.
+
+The directory belongs to root. Change the owner one time:
+
+```bash
+sudo chown -R palomerolab:palomerolab /var/www/html
+```
+
+After that, each build needs no sudo:
+
+```bash
+cd ~/Public/palomerolab.org
+hugo --gc --minify --baseURL http://156.145.233.38/ --destination /var/www/html
+```
+
+Add `--cleanDestinationDir` if you deleted a page and it must disappear.
 
 ## Publication
 
@@ -128,14 +152,24 @@ pkill -f 'hugo server'
 
 ### The lab server shows an old version of the site
 
-An earlier `python3 -m http.server` still serves a stale `public/` directory on
-port 8000. That server does not reload. Stop it:
+An earlier `python3 -m http.server` can still serve a stale `public/` directory
+on port 8000. That server does not reload. Stop it:
 
 ```bash
 pkill -f http.server
 ```
 
-Port 80 on the lab server belongs to Apache, not to this site.
+Port 80 shows the static copy in `/var/www/html`. It changes only when you
+build into that directory.
+
+### A command over ssh exits with code 255
+
+`pkill -f 'hugo server'` matches the ssh command line that carries it. The
+command kills its own session. Match the process name instead:
+
+```bash
+pkill -x hugo
+```
 
 ## Useful Hugo commands
 
