@@ -55,6 +55,32 @@ disableKinds = ["taxonomy", "term"]
   url = "#contact"
   weight = 8
 
+# The npm packages are the source for the vendored CSS and JavaScript. Adding a
+# mount for a component replaces the default, so assets/ and static/ appear
+# here as well.
+[module]
+  [[module.mounts]]
+    source = "assets"
+    target = "assets"
+  [[module.mounts]]
+    source = "node_modules/startbootstrap-scrolling-nav/dist/css/styles.css"
+    target = "assets/vendor/scrolling-nav.css"
+  [[module.mounts]]
+    source = "node_modules/@fortawesome/fontawesome-free/css/all.min.css"
+    target = "assets/vendor/fontawesome.css"
+  [[module.mounts]]
+    source = "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+    target = "assets/vendor/bootstrap.bundle.js"
+  [[module.mounts]]
+    source = "node_modules/startbootstrap-scrolling-nav/dist/js/scripts.js"
+    target = "assets/vendor/scrolling-nav.js"
+  [[module.mounts]]
+    source = "static"
+    target = "static"
+  [[module.mounts]]
+    source = "node_modules/@fortawesome/fontawesome-free/webfonts"
+    target = "static/webfonts"
+
 [markup]
   [markup.goldmark]
     [markup.goldmark.renderer]

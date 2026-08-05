@@ -6,7 +6,8 @@ live in `layouts/`.
 ## Requirements
 
 - `hugo` (extended version)
-- `node` and `npm`, for `make fmt`. The first run installs Prettier locally
+- `node` and `npm`, for `make fmt` and for the vendored CSS and JavaScript.
+  The first run of `make fmt` installs them
 - `ssh` access to `palomerolab-server`, for a preview on the lab network
 - `rsync`, for `make sync` and `make deploy-on-lab-server`
 
@@ -54,6 +55,17 @@ reformat of the whole file is hard to read and hard to revert.
 Prettier reads the Go templates through `prettier-plugin-go-template`. Without
 the plugin it breaks them, so `make fmt` runs Prettier from `node_modules`, not
 from `PATH`. The first run installs it.
+
+## Vendored CSS and JavaScript
+
+Bootstrap, Font Awesome, and the Scrolling Nav template come from npm, not from
+a CDN. `hugo.toml` mounts each file into `assets/vendor/`, and the templates
+bundle them with `assets/css/styles.css` into one stylesheet and one script.
+Hugo minifies each bundle and gives it a name that carries a hash of its
+content, so a reader with an old copy always gets the new one.
+
+Run `npm install` after a fresh clone. To move a version, change it in
+`package.json`, run `npm install`, then build.
 
 ## Repository layout
 
