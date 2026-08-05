@@ -25,6 +25,7 @@
       <div id="dynamic-people-section">
         <!-- Team roster (data/team.yaml), grouped by role -->
         {{ range site.Data.team }}
+        {{ if .members }}
         <div class="mb-5">
           <h3>{{ .group }}</h3>
           <div class="row">
@@ -44,6 +45,7 @@
             {{ end }}
           </div>
         </div>
+        {{ end }}
         {{ end }}
       </div>
     </div>
