@@ -6,7 +6,7 @@ live in `layouts/`.
 ## Requirements
 
 - `hugo` (extended version)
-- `prettier`, for `make fmt`
+- `node` and `npm`, for `make fmt`. The first run installs Prettier locally
 - `ssh` access to `palomerolab-server`, for a preview on the lab network
 - `rsync`, for `make sync` and `make deploy-on-lab-server`
 
@@ -15,22 +15,54 @@ live in `layouts/`.
 ```bash
 make dev      # serve at http://localhost:1313/
 make build    # build into public/
-make fmt      # format with Prettier
+make fmt      # format with Prettier. Run this before each commit
 make sync     # copy the built site to the Desktop folder
 make help     # list all targets
 ```
 
+## The alumni list
+
+`assets/alumni.csv` holds one row for each alumnus, with these columns:
+
+| Column     | Contents                                                                                                                                  |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| `category` | Postdoctoral & PhD Mentees, Clinical Fellows, Graduate & Predoctoral Trainees, Research Technicians, or Undergraduate & Visiting Students |
+| `years`    | Years in the Palomero Lab. A trailing dash means still present.                                                                           |
+| `name`     | Full name, with the degree suffix as the person uses it.                                                                                  |
+| `position` | Current position and institution, outside this lab.                                                                                       |
+
+The file sits in `assets/`, not in `data/`, because Hugo reads no CSV from
+`data/`. A template gets the rows with `transform.Unmarshal`:
+
+```go-html-template
+{{ $alumni := resources.Get "alumni.csv" | transform.Unmarshal }}
+```
+
+Keep the file valid CSV. A comment line is not valid CSV.
+
+## Formatting
+
+Run `make fmt` before each commit. It formats every file with Prettier, see
+`.prettierrc`. Nothing else checks the formatting, so the habit is the only
+thing that keeps the diffs clean. A commit that mixes a real change with a
+reformat of the whole file is hard to read and hard to revert.
+
+Prettier reads the Go templates through `prettier-plugin-go-template`. Without
+the plugin it breaks them, so `make fmt` runs Prettier from `node_modules`, not
+from `PATH`. The first run installs it.
+
 ## Repository layout
 
-| Path                 | Contents                                              |
-| -------------------- | ----------------------------------------------------- |
-| `layouts/index.html` | The home page. It calls one partial for each section.  |
+| Path                 | Contents                                                  |
+| -------------------- | --------------------------------------------------------- |
+| `layouts/index.html` | The home page. It calls one partial for each section.     |
 | `layouts/partials/`  | One file for each section, named after it: `people.html`. |
-| `content/`           | Prose fragments in Markdown. Templates pull them in.   |
-| `data/team.yaml`     | The team roster. Edit this file to change the people.  |
-| `static/`            | Files that Hugo copies without a change: photos, CSS.  |
-| `hugo.toml`          | Site configuration.                                    |
-| `public/`            | Build output. Do not edit. Do not commit.              |
+| `content/`           | Prose fragments in Markdown. Templates pull them in.      |
+| `data/team.yaml`     | The team roster. Edit this file to change the people.     |
+| `assets/alumni.csv`  | Alumni, 2005 to now. No template reads it yet.            |
+| `static/`            | Files that Hugo copies without a change: photos, CSS.     |
+| `hugo.toml`          | Site configuration.                                       |
+| `public/`            | Build output. Do not edit. Do not commit.                 |
 
 ## How to make common changes
 
@@ -115,13 +147,13 @@ The lab server never publishes the site. It is a preview machine only.
 
 ## Known problems
 
-| Problem                  | Fix                                                 |
-| ------------------------ | --------------------------------------------------- |
-| Edit does not appear     | `hugo server --disableFastRender`                    |
-| Port 1313 busy           | `pkill -x hugo`                                      |
-| Stale site on port 8000  | `pkill -f http.server`                               |
-| ssh command exits 255    | `pkill -x hugo`, not `pkill -f 'hugo server'`        |
-| Lab server shows an old site | `make deploy-on-lab-server`             |
+| Problem                      | Fix                                           |
+| ---------------------------- | --------------------------------------------- |
+| Edit does not appear         | `hugo server --disableFastRender`             |
+| Port 1313 busy               | `pkill -x hugo`                               |
+| Stale site on port 8000      | `pkill -f http.server`                        |
+| ssh command exits 255        | `pkill -x hugo`, not `pkill -f 'hugo server'` |
+| Lab server shows an old site | `make deploy-on-lab-server`                   |
 
 ## Useful Hugo commands
 

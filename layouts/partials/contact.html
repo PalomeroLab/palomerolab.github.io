@@ -13,8 +13,7 @@
         </p>
         <br />
         <address>
-          {{ range site.Params.address }}{{ . }}<br />
-          {{ end }}<br />
+          {{ range site.Params.address }}{{ . }}<br />{{ end }}<br />
           <abbr title="Phone">Phone:</abbr> {{ site.Params.phone }} <br />
         </address>
       </div>

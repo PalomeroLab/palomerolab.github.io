@@ -18,9 +18,9 @@ home page in front of it, because the section is not there to scroll to. -->
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ms-auto">
         {{ range site.Menus.main }}
-        <li class="nav-item">
-          <a class="nav-link" href="{{ if hasPrefix .URL "#" }}{{ $prefix }}{{ .URL }}{{ else }}{{ .URL | relURL }}{{ end }}">{{ .Name }}</a>
-        </li>
+          {{ $href := .URL | relURL }}
+          {{ if hasPrefix .URL "#" }}{{ $href = printf "%s%s" $prefix .URL }}{{ end }}
+          <li class="nav-item"><a class="nav-link" href="{{ $href }}">{{ .Name }}</a></li>
         {{ end }}
       </ul>
     </div>

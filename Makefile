@@ -1,5 +1,7 @@
 # Palomero Lab site.
 # Production is GitHub Pages, built by .github/workflows/hugo.yml on push to main.
+#
+# Run `make fmt` before each commit. Nothing else checks the formatting.
 
 PORT := 1313
 
@@ -13,7 +15,7 @@ LAB_URL := http://156.145.233.38/
 LAB_DIR := /var/www/html
 
 .DEFAULT_GOAL := help
-.PHONY: help dev build clean fmt sync deploy-on-lab-server check-hugo check-prettier
+.PHONY: help dev build clean fmt sync deploy-on-lab-server check-hugo
 
 help:  ## Show this help
 	@grep -E '^[a-z-]+:.*##' $(MAKEFILE_LIST) | sed 's/:.*## / — /'
@@ -27,8 +29,8 @@ build: check-hugo  ## Build into public/
 clean:  ## Remove public/
 	rm -rf public
 
-fmt: check-prettier  ## Format with Prettier, see .prettierrc
-	prettier --write --ignore-unknown .
+fmt: node_modules  ## Format with Prettier, see .prettierrc. Run before each commit
+	./node_modules/.bin/prettier --write --ignore-unknown .
 
 sync: build  ## Copy the built site to the Desktop folder
 	rsync -a public/ "$(DESKTOP)/"
@@ -41,5 +43,8 @@ deploy-on-lab-server: check-hugo  ## Build here, copy to the lab server at http:
 check-hugo:
 	@command -v hugo >/dev/null || { echo 'hugo is not installed: https://gohugo.io/installation/'; exit 1; }
 
-check-prettier:
-	@command -v prettier >/dev/null || { echo 'prettier is not installed: npm install -g prettier'; exit 1; }
+# Prettier reads the Go templates through prettier-plugin-go-template. Without
+# the plugin it mangles them, so it runs from node_modules, never from PATH.
+node_modules: package.json
+	npm install
+	@touch node_modules

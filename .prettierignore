@@ -1,0 +1,4 @@
+# Prettier reads the templates through prettier-plugin-go-template.
+public/
+resources/
+node_modules/

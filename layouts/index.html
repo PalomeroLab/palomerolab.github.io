@@ -16,36 +16,54 @@
     <link rel="canonical" href="{{ .Permalink }}" />
 
     <!-- Favicon: icon in the browser tab -->
-    <link rel="icon" type="image/x-icon" href='{{ "assets/favicon.png" | relURL }}' />
+    <link rel="icon" type="image/x-icon" href="{{ "assets/favicon.png" | relURL }}" />
 
     <!-- Open Graph Meta Tags: tags for social media and search previews -->
     {{ template "_internal/opengraph.html" . }}
 
+
     <!-- Twitter Card Meta Tags -->
     {{ template "_internal/twitter_cards.html" . }}
 
+
     <!-- Schema.org: microdata for search engines -->
     {{ template "_internal/schema.html" . }}
+
 
     <!-- Stylesheets -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@latest/font/bootstrap-icons.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css" />
     <link href="https://cdn.jsdelivr.net/npm/startbootstrap-scrolling-nav@5.0.6/dist/css/styles.min.css" rel="stylesheet" />
-    <link href='{{ "assets/css/styles.css" | relURL }}' rel="stylesheet" />
+    {{ $css := resources.Get "css/styles.css" | fingerprint }}
+    <link href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}" rel="stylesheet" />
   </head>
   <body id="page-top">
     {{ partial "navbar.html" . }}
     {{ partial "banner.html" . }}
+
+    {{/* A fragment in content/ carries no title, and build.render: never keeps
+      it off the site. Without that front matter it becomes a page of its own.
+    */}}
+    {{ range site.RegularPages }}
+      {{ if not .Title }}
+        {{ warnf "%s builds a page at %s. Add build.render: never to its front matter." .File.Path .RelPermalink }}
+      {{ end }}
+    {{ end }}
+
+
     <!-- One section for each menu entry in hugo.toml; backgrounds alternate by position -->
     {{ $i := 0 }}
     {{ range site.Menus.main }}
-    {{ if hasPrefix .URL "#" }}
-    {{ $id := strings.TrimPrefix "#" .URL }}
-    <section id="{{ $id }}" class="{{ cond (eq (mod $i 2) 0) "py-5" "bg-light py-5" }}">{{ partial (printf "%s.html" $id) $ }}</section>
-    {{ $i = add $i 1 }}
+      {{ if hasPrefix .URL "#" }}
+        {{ $id := strings.TrimPrefix "#" .URL }}
+        {{ $class := cond (eq (mod $i 2) 0) "py-5" "bg-light py-5" }}
+        <section id="{{ $id }}" class="{{ $class }}">{{ partial (printf "%s.html" $id) $ }}</section>
+        {{ $i = add $i 1 }}
+      {{ end }}
     {{ end }}
-    {{ end }}
+
     {{ partial "footer.html" . }}
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/startbootstrap-scrolling-nav@5.0.6/dist/js/scripts.min.js"></script>
@@ -62,4 +80,3 @@
     <!-- TODO: Generate publication list for each lab member -->
   </body>
 </html>
-
