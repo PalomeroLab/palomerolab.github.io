@@ -1,14 +1,14 @@
 ---
 title: "Research"
-description: "Tracingthe genetic and epigenetic events that turn a healthy T cell into leukemia or lymphoma."
+description: "Tracing the genetic and epigenetic events that turn a healthy T cell into leukemia or lymphoma."
 ---
 
 <!-- # Research -->
 
 ## What we're working on now
 
-Building on that genetic roadmap, the lab currently works across several
-interconnected areas:
+Building on the [genetic roadmap of PTCL](/#about), the lab currently works
+across several interconnected areas:
 
 **Mechanisms of oncogenic signaling.** We dissect how mutant epigenetic regulators
 and signal transduction mediators induce transformation in T-cell malignancies.
