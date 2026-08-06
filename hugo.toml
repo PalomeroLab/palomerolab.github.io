@@ -36,11 +36,6 @@ disableKinds = ["taxonomy", "term"]
   weight = 4
 
 [[menus.main]]
-  name = "Projects"
-  url = "#projects"
-  weight = 5
-
-[[menus.main]]
   name = "Join Us"
   url = "#join"
   weight = 6
