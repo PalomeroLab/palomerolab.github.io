@@ -10,7 +10,8 @@
           <div class="mb-5">
             <h3>{{ .group }}</h3>
             <div class="row">
-              {{ range sort .members "name" }}
+              {{/* Past Members keep the file order, which groups them by former role. */}}
+              {{ range cond (eq .group "Past Members") .members (sort .members "name") }}
                 {{/* The photo comes from the file in assets/photos/ that carries the
                   member name. A photo field overrides that guess, with a path under
                   assets/. A missing photo leaves a broken image, and the build still

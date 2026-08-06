@@ -9,7 +9,8 @@
 # cv takes a path under static/, without the static/ prefix, for example assets/cv/najac.pdf
 # bio names a fragment in content/sections/. It replaces description, for a longer text.
 # wide, on a group, gives its cards the full width with the photo beside the text.
-# Groups render in the order below. Members render in alphabetical order.
+# Groups render in the order below. Members render in alphabetical order,
+# except Past Members, which keep the file order.
 - group: Principal Investigator
   wide: true
   members:
@@ -39,38 +40,42 @@
       description: Ryan is a very good research technician
       orcid: 0009-0000-6280-5646
       github: rdnajac
-- group: Students
+- group: PhD Students
+  members: []
+- group: Visiting Undergraduate Students
   members: []
 - group: Past Members
   members:
-    - name: Wen-Hsuan Lin
-      suffix: MD, PhD
-      description: Dr. Wen-Hsuan Lin was a hematopathologist and physician-scientist in the Department of Pathology and Cell Biology who worked on PTCL in the Palomero Lab
-    - name: Kalay Bertulfo
+    # Order: postdoctoral fellows, instructors, research staff, PhD students,
+    # visiting undergraduate students.
+    - name: Clara Reglero Gomez
       suffix: PhD
-      description: Kalay completed their PhD while working on PTCL in the Palomero Lab
-    - name: Hannah Miller
-      suffix: BS
-      description: Hannah was the Palomero lab manager and a research technician
-    - name: Cindy Ma
-      suffix: MPH
-      description: Cindy was a research technician
-    - name: Bobby Shih
-      suffix: PhD
-      description: Bobby Shih received his PhD from the Integrated Cellular, Molecular and Biomedical Studies Program at Columbia University working on PTCL in the Palomero Lab
-      website: http://www.bobbyshih.net
+      description: Dr. Reglero Gomez was a postdoctoral fellow who worked on PTCL in the Palomero Lab
     - name: Jose Rodriguez Cortes
       suffix: PhD
       description: Dr. Cortes was a postdoctoral fellow who worked on PTCL in the Palomero Lab
     - name: Robert Albero Gallego
       suffix: PhD
       description: Dr. Albero Gallego was a computational postdoctoral fellow in the Palomero Lab
-    - name: Christine Moon
-      suffix: PhD
-      description: Dr. Moon was an MSTP student in the Palomero Group
+    - name: Wen-Hsuan Lin
+      suffix: MD, PhD
+      description: Dr. Wen-Hsuan Lin was a hematopathologist and physician-scientist in the Department of Pathology and Cell Biology who worked on PTCL in the Palomero Lab
     - name: Adam Mackey
       suffix: BS
       description: Adam was the lab manager and a research technician
-    - name: Clara Reglero Gomez
+    - name: Cindy Ma
+      suffix: MPH
+      description: Cindy was a research technician
+    - name: Hannah Miller
+      suffix: BS
+      description: Hannah was the Palomero lab manager and a research technician
+    - name: Bobby Shih
       suffix: PhD
-      description: Dr. Reglero Gomez was a postdoctoral fellow who worked on PTCL in the Palomero Lab
+      description: Bobby Shih received his PhD from the Integrated Cellular, Molecular and Biomedical Studies Program at Columbia University working on PTCL in the Palomero Lab
+      website: http://www.bobbyshih.net
+    - name: Christine Moon
+      suffix: PhD
+      description: Dr. Moon was an MSTP student in the Palomero Group
+    - name: Kalay Bertulfo
+      suffix: PhD
+      description: Kalay completed their PhD while working on PTCL in the Palomero Lab
