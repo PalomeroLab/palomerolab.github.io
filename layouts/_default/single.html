@@ -19,12 +19,16 @@
     }}
 
 
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@latest/font/bootstrap-icons.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css" />
-    <link href="https://cdn.jsdelivr.net/npm/startbootstrap-scrolling-nav@5.0.6/dist/css/styles.min.css" rel="stylesheet" />
-    {{ $css := resources.Get "css/styles.css" | fingerprint }}
-    <link href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}" rel="stylesheet" />
+    <!-- Stylesheets. The vendor files come from node_modules, see the mounts in
+    hugo.toml. Hugo bundles them with ours, minifies the result, and gives it a
+    name that changes with its content. -->
+    {{ $styles := slice
+      (resources.Get "vendor/scrolling-nav.css")
+      (resources.Get "vendor/fontawesome.css")
+      (resources.Get "css/styles.css")
+      | resources.Concat "css/bundle.css" | minify | fingerprint
+    }}
+    <link href="{{ $styles.RelPermalink }}" integrity="{{ $styles.Data.Integrity }}" rel="stylesheet" />
   </head>
   <body id="page-top">
     {{ partial "navbar.html" . }}
@@ -37,7 +41,11 @@
     </section>
     {{ partial "footer.html" . }}
 
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    {{ $scripts := slice
+      (resources.Get "vendor/bootstrap.bundle.js")
+      (resources.Get "vendor/scrolling-nav.js")
+      | resources.Concat "js/bundle.js" | minify | fingerprint
+    }}
+    <script src="{{ $scripts.RelPermalink }}" integrity="{{ $scripts.Data.Integrity }}"></script>
   </body>
 </html>
