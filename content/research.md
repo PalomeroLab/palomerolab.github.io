@@ -1,32 +1,46 @@
 ---
 title: "Research"
-description: "How the Palomero Lab traces the genetic and epigenetic events that turn a healthy T cell into leukemia or lymphoma."
+description: "Tracingthe genetic and epigenetic events that turn a healthy T cell into leukemia or lymphoma."
 ---
 
-# Research
+<!-- # Research -->
 
-## Tracing how a healthy T cell becomes a cancer
+## What we're working on now
 
-The Palomero Lab studies the genetic and epigenetic events that drive T-cell
-acute lymphoblastic leukemia (T-ALL) and peripheral T-cell lymphomas (PTCL),
-from the first mutation to the therapies that might reverse it.
+Building on that genetic roadmap, the lab currently works across several
+interconnected areas:
 
-## From a single mutation to malignancy
+**Mechanisms of oncogenic signaling.** We dissect how mutant epigenetic regulators
+and signal transduction mediators induce transformation in T-cell malignancies.
+Work from our group identified frequent oncogenic fusion involving the VAV1
+oncogene as well as the recurrent FYN-TRAF3IP2 rearrangement, expanding our
+understanding of PTCL biology and the role of lymphoma driver genes in the
+regulation of differentiation, signaling pathways and interaction of the
+malignant cells with the lymphoma microenvironment.
 
-We work across genomics, mouse models, and single-cell biology to understand
-what makes T-cell malignancies distinct — and vulnerable.
+**Epigenetic regulation and hematopoietic aging.** We study how epigenetic
+regulators shape both lymphomagenesis and normal blood aging. This includes
+ongoing work on ID2 as an epigenetically regulated, therapeutically targetable
+factor in PTCL, and on PHF6 and PHIP, whose loss can rejuvenate aged
+hematopoietic stem cells.
 
-**Genetics — Genetic drivers of transformation** We identified recurrent
-mutations — including RHOA G17V, VAV1 fusions, PHF6, and NT5C2 — that push
-normal T cells toward leukemia and lymphoma, and used them to define disease
-subtypes such as angioimmunoblastic T-cell lymphoma (AITL).
+**Tumor microenvironment and single-cell/computational biology.** In collaboration
+with the Rabadan lab, we use single-cell and spatial multi-omic profiling to
+track how tumor and immune/stromal microenvironment co-evolve in PTCL, and we
+have helped develop and apply GET, an interpretable AI foundation model of
+transcriptional regulation across human cell types, to decode regulatory
+circuits in T-cell leukemia and lymphoma.
 
-**In vivo models — Preclinical mouse models** Genetically engineered mouse
-models built in the lab let us watch these mutations drive disease in real time,
-and test whether reversing them — or the pathways they control — can reverse the
-cancer too.
+**Preclinical modeling.** We have developed some of the first genetically engineered
+mouse models of AITL, which, along with patient-derived xenografts and organoid
+platforms, are used to study tumor-niche interactions and to test candidate
+therapies in settings that recapitulate the human disease.
 
-**Computation — Single-cell & AI-driven discovery** High-throughput
-single-cellsequencing and foundation models like GET help us map the tumor
-microenvironment and uncover therapeutic vulnerabilities specific to each PTCL
-subtype.
+**Therapeutic targeting.** A major interest of the lab is turning mechanistic
+insight into new treatment strategies, including: JAK-STAT pathway inhibition in
+CTCL (including romidepsin combined with afatinib or mechlorethamine, and
+testing of a novel photoreleasable/optically controlled JAK inhibitor developed
+with the Yuste lab); farnesyltransferase inhibition (tipifarnib) in AITL;
+NT5C2-directed strategies to overcome chemoresistance in relapsed T-ALL;
+targeting of NOTCH1 and the neddylation pathway in T-ALL; and emerging work on
+the sphingosine-1-phosphate receptor 1 (S1PR1) pathway in AITL.

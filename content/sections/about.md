@@ -1,27 +1,35 @@
-# About our group
+# About the Palomero Lab
 
-Peripheral T-cell lymphomas (PTCLs) constitute a heterogeneous group of
-non-Hodgkin lymphomas associated with poor prognosis. We performed a systematic
-analysis of the genetic alterations responsible for PTCL transformation using a
-combination of whole exome sequencing of tumor-normal DNA pairs, RNAseq analysis
-and targeted deep sequencing of candidate genes. These analyses verified the
-presence of recurrent mutations in the TET2 tumor suppressor gene in PTCLs and
-identified recurrent mutations in the RHOA small GTPase gene including a highly
-prevalent RHOA G17V allele in this disease identified in 70% of
-angioimmunoblastic T-cell lymphomas (AITL) and almost 20% of not otherwise
-specified PTCL (PTCL NOS) samples. Mechanistically, our results demonstrated
-that RHOA G17V inhibits RHOA signaling via a GEF-trap mechanism. Thus, RHOA G17V
-effectively binds to active GEFs but fails to load GTP and to interact with
-downstream effector factors, which results in impaired RHOA signaling.
+Our central goal is to translate the genetic and epigenetic drivers of T-cell
+malignancy into a mechanistic understanding of transformation and from there,
+into rationally designed, biomarker-guided therapies for diseases that remain
+among the most difficult to treat in hematologic oncology.
 
-Our central hypothesis is that the PTCL RHOA G17V mutation acts as negative
-regulators of RHOA signaling and contributes to T-cell transformation by
-disrupting key mechanisms that control cell signaling, proliferation, survival
-and migration. Moreover we postulate that RHOA G17V specifically cooperates with
-TET2 mutations in the pathogenesis of AITL. The focus of our research is (i) to
-identify signaling factors mediating the oncogenic activity of RHOA G17V in
-T-cells, (ii) to characterize the role and mechanisms of RHOA G17V in T-cell
-transformation and finally (iii) to analyze the oncogenic effects of RHOA G17V
-in the pathogenesis of AITL in vivo.
+## Overview
 
-[Read about our research →](/research/)
+The Palomero Lab is a basic and translational research group at the Institute
+for Cancer Genetics, Columbia University Irving Medical Center (CUIMC),
+dedicated to understanding mechanisms of transformation in T-cell malignancies.
+We study the full spectrum of mature and immature T-cell malignancies, including
+Peripheral T-cell Lymphoma (PTCL), Cutaneous T-cell Lymphoma (CTCL) and Sézary
+syndrome, and T-cell Acute Lymphoblastic Leukemia (T-ALL), by combining
+genomics, mouse modeling, single-cell and computational biology, and drug
+discovery to move from mutation to mechanism to therapy. From mapping the
+genetic landscape of PTCL to lineage determination and therapeutic
+vulnerabilities Our program began with a systematic genomic dissection of PTCL,
+using whole-exome sequencing of matched tumor-normal pairs, RNA-seq, and
+targeted deep sequencing to ask what actually drives transformation in this
+notoriously heterogeneous and poor-prognosis group of lymphomas. That work
+defined much of the field's current understanding of PTCL genetics: RHOA G17V, a
+highly recurrent hotspot mutation in the small GTPase RHOA, present in roughly
+70% of AITL and up to 20% of PTCL-NOS. We showed that RHOA G17V acts through a
+"GEF-trap" dominant-negative mechanism, it binds active RHO guanine exchange
+factors (RHO-GEFs) but fails to load GTP or engage downstream effectors,
+dominantly disabling normal RHOA signaling and redirecting T-cell
+differentiation towards the T follicular helper cell lineage. Activating
+mutations and translocations in VAV1 and recurrent FYN alterations, identifying
+additional GTPase- and kinase-pathway lesions that cooperate with RHOA and TET2
+in AITL and PTCL-NOS. The mutational landscape of CTCL and Sézary syndrome,
+extending our genomic framework beyond nodal PTCL to cutaneous disease.
+
+[Learn what we're working on now →](/research/)
