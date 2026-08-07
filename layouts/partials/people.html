@@ -43,7 +43,8 @@
               "cv" .Params.cv
               "website" .Params.website
               "content" ($longBio | safeHTML)
-            ) }}
+              )
+            }}
           {{ end }}
         {{ end }}
         {{ if $allMembers }}
@@ -60,7 +61,8 @@
                 {{ $img := "" }}
                 {{ $name := .name }}
                 {{/* A wide card, the Principal Investigator, defaults to
-                  its long bio open. */}}
+                  its long bio open.
+                */}}
                 {{ $expanded := $wide }}
                 {{ with .photo }}
                   {{ $img = resources.Get . }}
@@ -107,17 +109,21 @@
                             {{ $bioID := printf "bio-%s" (anchorize $name) }}
                             <p class="card-text">
                               <a
-                                class="text-muted bio-toggle{{ if not $expanded }} collapsed{{ end }}"
+                                class="text-muted bio-toggle{{ if not $expanded }}collapsed{{ end }}"
                                 data-bs-toggle="collapse"
                                 href="#{{ $bioID }}"
                                 role="button"
-                                aria-expanded="{{ if $expanded }}true{{ else }}false{{ end }}"
+                                aria-expanded="{{ if $expanded }}
+                                  true
+                                {{ else }}
+                                  false
+                                {{ end }}"
                                 aria-controls="{{ $bioID }}"
                                 ><span class="bio-toggle-more">More</span><span class="bio-toggle-less">Less</span>
                                 <i class="fa-solid fa-angle-down"></i
                               ></a>
                             </p>
-                            <div class="collapse{{ if $expanded }} show{{ end }}" id="{{ $bioID }}">
+                            <div class="collapse{{ if $expanded }}show{{ end }}" id="{{ $bioID }}">
                               <div class="card-text">{{ . }}</div>
                             </div>
                           {{ end }}
@@ -171,9 +177,36 @@
                 </div>
               {{ end }}
             </div>
+            {{/* The alumni roster is a table, one block for each category, in
+              the order of the rows in assets/alumni.csv. The first row of the
+              file gives the column names.
+            */}}
             {{ if eq .group "Past Members" }}
               {{ with resources.Get "alumni.csv" }}
-                <p><a href="{{ .RelPermalink }}">View our roster</a></p>
+                {{ $rows := . | transform.Unmarshal (dict "targetType" "map") }}
+                {{ $categories := slice }}
+                {{ range $rows }}
+                  {{ if not (in $categories .category) }}{{ $categories = $categories | append .category }}{{ end }}
+                {{ end }}
+                <details class="alumni-roster">
+                  <summary>View our roster</summary>
+                  {{ range $category := $categories }}
+                    {{ $members := where $rows "category" $category }}
+                    <h5>{{ $category }}</h5>
+                    <table class="table table-sm">
+                      <tbody>
+                        {{ range $members }}
+                          <tr>
+                            <td class="text-nowrap">{{ .years }}</td>
+                            <td>{{ .name }}</td>
+                            <td>{{ .position }}</td>
+                          </tr>
+                        {{ end }}
+                      </tbody>
+                    </table>
+                  {{ end }}
+                  <p><a href="{{ .RelPermalink }}" download>Download the roster as a CSV file</a></p>
+                </details>
               {{ end }}
             {{ end }}
           </div>

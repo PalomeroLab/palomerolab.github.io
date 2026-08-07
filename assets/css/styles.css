@@ -10,7 +10,11 @@ footer.bg-dark {
 
 .intro-banner {
   margin-top: 0rem;
-  background-image: url("/assets/banner.jpg");
+  /* This file runs through resources.ExecuteAsTemplate, so it can hold a Hugo
+     expression. Keep the prettier-ignore comment. Without it, Prettier drops
+     the spaces inside the expression and the build fails. */
+  /* prettier-ignore */
+  background-image: url("{{ ((resources.Get "banner.jpg").Resize "2000x webp q85" | fingerprint).RelPermalink }}");
   background-color: #cccccc;
   height: 500px;
   background-position: center;
@@ -51,6 +55,17 @@ footer.bg-dark {
 .group-photo img {
   width: 80%;
   height: auto;
+}
+
+.alumni-roster summary {
+  cursor: pointer;
+  color: #012169;
+}
+.alumni-roster h5 {
+  margin-top: 1.5rem;
+}
+.alumni-roster table {
+  margin-bottom: 0;
 }
 
 .publication-list {

@@ -5,8 +5,37 @@ disableKinds = ["taxonomy", "term"]
 
 [params]
   tagline = "T-cell malignancies molecular genetics group"
+  # The number of publications on the home page. data/publications.json holds more.
+  publicationsShown = 5
   phone = "(212) 851-5292"
   address = ["Irving Cancer Research Center", "Columbia University Irving Medical Center", "1130 Saint Nicholas Ave, Room 607", "New York, NY 10032"]
+  # The Google Maps embed for the Contact section. To replace it, open the map,
+  # select Share, then Embed a map, and copy the src value of the iframe.
+  mapEmbed = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3018.4632594540813!2d-73.94211612396799!3d40.83975177137466!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2f7b5f2647ccb%3A0x4a04307b8fce7890!2sColumbia%20University%20Irving%20Cancer%20Research%20Center!5e0!3m2!1sen!2sus!4v1726247054753!5m2!1sen!2sus"
+
+  # The footer credit line.
+  [params.maintainer]
+    name = "Ryan D. Najac"
+    url = "http://www.rdnajac.tech"
+    since = 2024
+
+  # The principal investigator, shown in the footer.
+  [params.pi]
+    name = "Teresa Palomero"
+    suffix = "PhD"
+    url = "https://www.pathology.columbia.edu/profile/teresa-m-palomero-phd"
+    title = "Professor"
+
+  # The institution links in the footer, in the order that they appear.
+  [params.institution]
+    university = "Columbia University"
+    universityUrl = "https://www.columbia.edu/"
+    department = "Pathology & Cell Biology"
+    departmentUrl = "https://www.pathology.columbia.edu"
+    center = "Institute for Cancer Genetics"
+    centerUrl = "https://www.vagelos.columbia.edu/departments-centers/institute-cancer-genetics"
+    medicalCenter = "Columbia University Irving Medical Center"
+    medicalCenterUrl = "https://www.cuimc.columbia.edu"
 
 # The menu is the list of sections, in render order. Each entry gives one
 # navbar link and one section on the page. The url names the section: "#people"
