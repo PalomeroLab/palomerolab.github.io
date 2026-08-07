@@ -18,13 +18,6 @@ disableKinds = ["taxonomy", "term"]
   url = "#about"
   weight = 1
 
-# A url that does not start with "#" links to a page of its own. The home page
-# skips it.
-[[menus.main]]
-  name = "Research"
-  url = "/research/"
-  weight = 2
-
 [[menus.main]]
   name = "People"
   url = "#people"
@@ -39,11 +32,6 @@ disableKinds = ["taxonomy", "term"]
   name = "Join Us"
   url = "#join"
   weight = 6
-
-[[menus.main]]
-  name = "Extras"
-  url = "#extras"
-  weight = 7
 
 [[menus.main]]
   name = "Contact"
