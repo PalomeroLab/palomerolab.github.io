@@ -15,3 +15,5 @@ rotation, thesis project, or research experience alongside our current team.
 > United, providing a well-resourced environment to build your own project.
 
 [Email Dr. Palomero →](mailto:tp215@cumc.columbia.edu)
+
+[Group Photo](/assets/group-photo.jpg)
