@@ -59,6 +59,9 @@
                 */}}
                 {{ $img := "" }}
                 {{ $name := .name }}
+                {{/* A wide card, the Principal Investigator, defaults to
+                  its long bio open. */}}
+                {{ $expanded := $wide }}
                 {{ with .photo }}
                   {{ $img = resources.Get . }}
                 {{ else }}
@@ -104,16 +107,17 @@
                             {{ $bioID := printf "bio-%s" (anchorize $name) }}
                             <p class="card-text">
                               <a
-                                class="text-muted"
+                                class="text-muted bio-toggle{{ if not $expanded }} collapsed{{ end }}"
                                 data-bs-toggle="collapse"
                                 href="#{{ $bioID }}"
                                 role="button"
-                                aria-expanded="false"
+                                aria-expanded="{{ if $expanded }}true{{ else }}false{{ end }}"
                                 aria-controls="{{ $bioID }}"
-                                >More <i class="fa-solid fa-angle-down"></i
+                                ><span class="bio-toggle-more">More</span><span class="bio-toggle-less">Less</span>
+                                <i class="fa-solid fa-angle-down"></i
                               ></a>
                             </p>
-                            <div class="collapse" id="{{ $bioID }}">
+                            <div class="collapse{{ if $expanded }} show{{ end }}" id="{{ $bioID }}">
                               <div class="card-text">{{ . }}</div>
                             </div>
                           {{ end }}

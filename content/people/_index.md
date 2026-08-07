@@ -28,4 +28,5 @@ profile file has front matter for the fields that it uses.
 # appears behind a hidden dropdown arrow on the card. If the profile
 # has no long text yet, omit the level 2 heading and the dropdown
 # arrow. The text of the level 2 heading is a marker only. It does not
-# appear on the page.
+# appear on the page. A wide group, in data/team.yaml, shows its long
+# text open by default.

@@ -36,6 +36,15 @@ footer.bg-dark {
   aspect-ratio: 3 / 4;
 }
 
+/* The dropdown arrow on a team card shows "Less" when open, "More" when
+   closed. Bootstrap toggles the collapsed class on the trigger to match. */
+.bio-toggle.collapsed .bio-toggle-less {
+  display: none;
+}
+.bio-toggle:not(.collapsed) .bio-toggle-more {
+  display: none;
+}
+
 .publication-list {
   padding-bottom: 1rem;
 }

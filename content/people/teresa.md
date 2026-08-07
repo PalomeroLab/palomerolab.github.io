@@ -16,9 +16,7 @@ fellowships at Harvard Medical School before joining Columbia in 2005, where she
 leads a research program dedicated to understanding, and ultimately treating,
 T-cell malignancies.
 
-## Bio 
-
-<!-- NOTE: hidden until a dropdown is clicked -->
+## Bio
 
 Over two decades, her lab has leveraged the power of next generation sequencing
 approaches to identify novel oncogenes and tumor suppressors in T-ALL
