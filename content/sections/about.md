@@ -16,7 +16,7 @@ syndrome, and T-cell Acute Lymphoblastic Leukemia (T-ALL), by combining
 genomics, mouse modeling, single-cell and computational biology, and drug
 discovery to move from mutation to mechanism to therapy.
 
-## From mapping the genetics of PTCL to therapeutic vulnerabilities
+## From the genetics of PTCL to therapeutic vulnerabilities
 
 Our program began with a systematic genomic dissection of PTCL, using
 whole-exome sequencing of matched tumor-normal pairs, RNA-seq, and targeted deep
