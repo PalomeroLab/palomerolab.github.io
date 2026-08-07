@@ -32,18 +32,67 @@ make help     # list all targets
 | `name`     | Full name, with the degree suffix as the person uses it.                                                                                  |
 | `position` | Current position and institution, outside this lab.                                                                                       |
 
-The Past Members group in the People section ends with a link to the file, at
-`/alumni.csv`. `layouts/partials/people.html` publishes it with
-`resources.Get`, which is why the file sits in `assets/`.
-
-It cannot go in `data/`. Hugo reads no CSV from that directory. To build a
-table from the rows one day, read them with `transform.Unmarshal`:
+The Past Members group in the People section ends with a roster. The roster is
+a table for each category, behind a disclosure arrow, and a link that downloads
+the file itself at `/alumni.csv`. `layouts/partials/people.html` reads the rows
+with `transform.Unmarshal`, which is why the file sits in `assets/`:
 
 ```go-html-template
-{{ $alumni := resources.Get "alumni.csv" | transform.Unmarshal }}
+{{ $rows := resources.Get "alumni.csv" | transform.Unmarshal (dict "targetType" "map") }}
 ```
 
+The `targetType` option makes the first row of the file the column names. The
+categories appear in the order that they first appear in the file, and the rows
+inside each category keep the file order.
+
+It cannot go in `data/`. Hugo reads no CSV from that directory.
+
 Keep the file valid CSV, and keep the comment lines out of it.
+
+## The publication list
+
+`data/publications.json` holds the records that the Publications section shows.
+The build reads that file. The build never calls PubMed, so a PubMed outage
+cannot break a deploy.
+
+`.github/workflows/publications.yml` refreshes the file every Monday. It runs
+`scripts/fetch-publications.py`, commits the result if the records changed, then
+starts the deploy workflow. To refresh the file now, run the workflow by hand
+from the Actions tab, or run the script and commit the result:
+
+```sh
+python3 scripts/fetch-publications.py
+```
+
+The script reads 20 records. `publicationsShown` in `hugo.toml` sets how many of
+them the page shows. To change the search, edit `TERM` in the script.
+
+## Images
+
+Put an image in `assets/`, then call the `image` shortcode from Markdown:
+
+```go-html-template
+{{< image src="group-photo.jpg" alt="Group Photo" class="group-photo" >}}
+```
+
+The shortcode resizes the file, converts it to webp, and sets the `width` and
+`height` attributes. The published name carries a hash of the content, so a
+reader with an old copy always gets the new one.
+
+An image that a template or the stylesheet uses needs no shortcode. Read it with
+`resources.Get`, see `layouts/partials/footer.html` for the Columbia logo, and
+`assets/css/styles.css` for the header banner. The stylesheet runs through
+`resources.ExecuteAsTemplate`, so it can hold a Hugo expression.
+
+Keep the `/* prettier-ignore */` comment above that expression. Prettier reads
+the file with its CSS parser, which drops the spaces inside the expression. The
+build then fails with `strconv.Atoi: parsing "webpq85"`.
+
+The social card image is the exception. `layouts/index.html` cuts it from
+`assets/banner.jpg` to 1200x630 and publishes it at the fixed path
+`/assets/banner.jpg`, in the jpeg format. `content/_index.md` names that path in
+its `images` field. A social scraper caches by URL and does not always read
+webp, so this file keeps a fixed name.
 
 ## Formatting
 
@@ -69,16 +118,18 @@ Run `npm install` after a fresh clone. To move a version, change it in
 
 ## Repository layout
 
-| Path                 | Contents                                                  |
-| -------------------- | --------------------------------------------------------- |
-| `layouts/index.html` | The home page. It calls one partial for each section.     |
-| `layouts/partials/`  | One file for each section, named after it: `people.html`. |
-| `content/`           | Prose fragments in Markdown. Templates pull them in.      |
-| `data/team.yaml`     | The team roster. Edit this file to change the people.     |
-| `alumni.csv`         | Alumni, 2005 to now. Hugo ignores it there.               |
-| `static/`            | Files that Hugo copies without a change: photos, CSS.     |
-| `hugo.toml`          | Site configuration.                                       |
-| `public/`            | Build output. Do not edit. Do not commit.                 |
+| Path                     | Contents                                                  |
+| ------------------------ | --------------------------------------------------------- |
+| `layouts/index.html`     | The home page. It calls one partial for each section.     |
+| `layouts/partials/`      | One file for each section, named after it: `people.html`. |
+| `content/`               | Prose fragments in Markdown. Templates pull them in.      |
+| `data/team.yaml`         | The team roster. Edit this file to change the people.     |
+| `data/publications.json` | The publication list. A workflow refreshes it.            |
+| `assets/`                | Files that Hugo processes: images, CSS, `alumni.csv`.     |
+| `scripts/`               | Helper scripts that the workflows run.                    |
+| `static/`                | Files that Hugo copies without a change.                  |
+| `hugo.toml`              | Site configuration.                                       |
+| `public/`                | Build output. Do not edit. Do not commit.                 |
 
 ## How the templates find the content
 

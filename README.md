@@ -20,17 +20,18 @@ the site did not rebuild, and the change is not live.
 
 ## What to edit
 
-| To change                      | Open this file                 |
-| ------------------------------ | ------------------------------ |
-| Lab members, and their links   | `data/team.yaml`               |
-| About our group                | `content/sections/about.md`    |
-| Ongoing Projects               | `content/sections/projects.md` |
-| Join Us                        | `content/sections/join.md`     |
-| Extras, for photos of the lab  | `content/sections/extras.md`   |
-| Teresa Palomero's bio          | `content/sections/teresa.md`   |
-| The Research page              | `content/research.md`          |
-| The alumni list                | `assets/alumni.csv`            |
-| Tagline, phone number, address | `hugo.toml`                    |
+| To change                      | Open this file                    |
+| ------------------------------ | --------------------------------- |
+| Lab members, and their links   | `data/team.yaml`                  |
+| About our group                | `content/sections/about.md`       |
+| Ongoing Projects               | `content/sections/projects.md`    |
+| Join Us                        | `content/sections/join.md`        |
+| Extras, for photos of the lab  | `content/sections/extras.md`      |
+| Teresa Palomero's bio          | `content/sections/teresa.md`      |
+| The Research page              | `content/research.md`             |
+| The alumni list                | `assets/alumni.csv`               |
+| The publication list           | Refreshed from PubMed each Monday |
+| Tagline, phone number, address | `hugo.toml`                       |
 
 The `.md` files are Markdown. Write plain text. `**bold**` makes bold, and
 `[text](https://example.com)` makes a link.
