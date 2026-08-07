@@ -6,7 +6,7 @@ x: teresa_palomero
 cv: assets/cv/TeresaPalomero-CV.pdf
 ---
 
-# Teresa 
+# Teresa
 
 Dr. Palomero is a Professor of Pathology and Cell Biology at the Institute for
 Cancer Genetics at Columbia University Irving Medical Center (CUIMC).
