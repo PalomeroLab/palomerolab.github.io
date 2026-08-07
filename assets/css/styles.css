@@ -45,8 +45,11 @@ footer.bg-dark {
   display: none;
 }
 
+.group-photo {
+  text-align: center;
+}
 .group-photo img {
-  width: 100%;
+  width: 80%;
   height: auto;
 }
 
