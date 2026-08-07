@@ -16,4 +16,4 @@ rotation, thesis project, or research experience alongside our current team.
 
 [Email Dr. Palomero →](mailto:tp215@cumc.columbia.edu)
 
-[Group Photo](/assets/group-photo.jpg)
+![Group Photo](/assets/group-photo.jpg)
