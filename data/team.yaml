@@ -7,39 +7,22 @@
 # orcid takes the bare identifier, for example 0000-0002-1825-0097
 # github and x take the bare handle, without the @
 # cv takes a path under static/, without the static/ prefix, for example assets/cv/najac.pdf
-# bio names a fragment in content/sections/. It replaces description, for a longer text.
 # wide, on a group, gives its cards the full width with the photo beside the text.
+# For a long-form profile instead of a yaml entry, see content/people/_index.md.
 # Groups render in the order below. Members render in alphabetical order,
 # except Past Members, which keep the file order.
 - group: Principal Investigator
   wide: true
-  members:
-    - name: Teresa Palomero
-      suffix: PhD
-      bio: sections/teresa
-      x: teresa_palomero
-      cv: assets/cv/TeresaPalomero-CV.pdf
+  members: []
 - group: Postdoctoral Fellows
   members:
-    - name: Anouchka Laurent
-      suffix: PhD
-      description: Dr. Laurent is a postdoctoral fellow working on PTCL in the Palomero Lab
-    - name: Laura Quevedo
-      suffix: PhD
-      description: Dr. Quevedo is a postdoctoral fellow in the Palomero Lab, working on implementing multi-omic and single-cell analysis to study PTCL using murine models and human samples
-      x: lauriquepa
     - name: Ruth Alonso Alonso
       suffix: PhD
       description: Dr. Alonso is a postdoctoral fellow working on PTCL in the Palomero Lab
 - group: Instructors
   members: []
 - group: Research Staff
-  members:
-    - name: Ryan D. Najac
-      suffix: BA
-      description: Ryan is a very good research technician
-      orcid: 0009-0000-6280-5646
-      github: rdnajac
+  members: []
 - group: PhD Students
   members: []
 - group: Visiting Undergraduate Students

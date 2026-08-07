@@ -6,12 +6,52 @@
       <!-- Team roster (data/team.yaml), grouped by role -->
       {{ range hugo.Data.team }}
         {{ $wide := .wide }}
-        {{ if .members }}
+        {{/* A long-form profile in content/people/ can stand in for a yaml
+          member entry. Each one carries its own card fields in front
+          matter, and its group field says which group it joins here.
+        */}}
+        {{ $group := .group }}
+        {{ $allMembers := .members }}
+        {{ with site.GetPage "people" }}
+          {{ range where .Pages "Params.group" $group }}
+            {{/* An H1 at the top of the body is a throwaway label, for the
+              person's name, and never renders. The text after it, up to
+              the first H2, is the card text. An H2 marks the start of a
+              longer text behind the dropdown arrow. Both headings are
+              markers only, stripped here.
+            */}}
+            {{ $body := replaceRE `(?s)^\s*<h1[^>]*>[^<]*</h1>\s*` "" .Content }}
+            {{ $parts := split $body "<h2" }}
+            {{ $shortBio := index $parts 0 }}
+            {{ $longBio := "" }}
+            {{ if gt (len $parts) 1 }}
+              {{ $longBio = index $parts 1 | replaceRE `(?s)^[^>]*>[^<]*</h2>\s*` "" }}
+            {{ end }}
+            {{ $allMembers = $allMembers | append (dict
+              "name" .Params.name
+              "suffix" .Params.suffix
+              "shortBio" ($shortBio | safeHTML)
+              "photo" .Params.photo
+              "joined" .Params.joined
+              "focus" .Params.focus
+              "fun_fact" .Params.fun_fact
+              "orcid" .Params.orcid
+              "github" .Params.github
+              "x" .Params.x
+              "email" .Params.email
+              "phone" .Params.phone
+              "cv" .Params.cv
+              "website" .Params.website
+              "content" ($longBio | safeHTML)
+            ) }}
+          {{ end }}
+        {{ end }}
+        {{ if $allMembers }}
           <div class="mb-5">
             <h3>{{ .group }}</h3>
             <div class="row">
               {{/* Past Members keep the file order, which groups them by former role. */}}
-              {{ range cond (eq .group "Past Members") .members (sort .members "name") }}
+              {{ range cond (eq .group "Past Members") $allMembers (sort $allMembers "name") }}
                 {{/* The photo comes from the file in assets/photos/ that carries the
                   member name. A photo field overrides that guess, with a path under
                   assets/. A missing photo leaves a broken image, and the build still
@@ -50,8 +90,8 @@
                       <div class="{{ $textCol }}">
                         <div class="card-body">
                           <p class="card-title"><strong>{{ .name }}{{ with .suffix }}, {{ . }}{{ end }}</strong></p>
-                          {{ with .bio }}
-                            {{ with site.GetPage . }}<div class="card-text">{{ .Content }}</div>{{ end }}
+                          {{ if .shortBio }}
+                            <div class="card-text">{{ .shortBio }}</div>
                           {{ else }}
                             <p class="card-text">{{ .description }}</p>
                           {{ end }}
@@ -60,6 +100,23 @@
                           {{ end }}
                           {{ with .focus }}<p class="card-text"><small class="text-muted">{{ . }}</small></p>{{ end }}
                           {{ with .fun_fact }}<p class="card-text"><small class="text-muted">{{ . }}</small></p>{{ end }}
+                          {{ with .content }}
+                            {{ $bioID := printf "bio-%s" (anchorize $name) }}
+                            <p class="card-text">
+                              <a
+                                class="text-muted"
+                                data-bs-toggle="collapse"
+                                href="#{{ $bioID }}"
+                                role="button"
+                                aria-expanded="false"
+                                aria-controls="{{ $bioID }}"
+                                >More <i class="fa-solid fa-angle-down"></i
+                              ></a>
+                            </p>
+                            <div class="collapse" id="{{ $bioID }}">
+                              <div class="card-text">{{ . }}</div>
+                            </div>
+                          {{ end }}
                           {{ if or .orcid .github .x .email .phone .cv .website }}
                             <p class="card-text">
                               {{ with .orcid }}

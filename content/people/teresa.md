@@ -1,9 +1,24 @@
+---
+name: Teresa Palomero
+suffix: PhD
+group: Principal Investigator
+x: teresa_palomero
+cv: assets/cv/TeresaPalomero-CV.pdf
+---
+
+# Teresa 
+
 Dr. Palomero is a Professor of Pathology and Cell Biology at the Institute for
-Cancer Genetics at Columbia University Irving Medical Center (CUIMC). She
-trained at the University of Oviedo (Spain) and completed postdoctoral
+Cancer Genetics at Columbia University Irving Medical Center (CUIMC).
+
+She trained at the University of Oviedo (Spain) and completed postdoctoral
 fellowships at Harvard Medical School before joining Columbia in 2005, where she
 leads a research program dedicated to understanding, and ultimately treating,
 T-cell malignancies.
+
+## Bio 
+
+<!-- NOTE: hidden until a dropdown is clicked -->
 
 Over two decades, her lab has leveraged the power of next generation sequencing
 approaches to identify novel oncogenes and tumor suppressors in T-ALL
