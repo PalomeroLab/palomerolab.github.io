@@ -25,7 +25,7 @@ factor in PTCL, and on PHF6 and PHIP, whose loss can rejuvenate aged
 hematopoietic stem cells.
 
 **Tumor microenvironment and single-cell/computational biology.** In collaboration
-with the Rabadan lab, we use single-cell and spatial multi-omic profiling to
+with the [Rabadan lab](https://www.rabadanlab.org), we use single-cell and spatial multi-omic profiling to
 track how tumor and immune/stromal microenvironment co-evolve in PTCL, and we
 have helped develop and apply GET, an interpretable AI foundation model of
 transcriptional regulation across human cell types, to decode regulatory

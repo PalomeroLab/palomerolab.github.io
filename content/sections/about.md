@@ -37,4 +37,4 @@ the field's current understanding of PTCL genetics:
 - The mutational landscape of CTCL and Sézary syndrome, extending our genomic
   framework beyond nodal PTCL to cutaneous disease.
 
-[Learn what we're working on now →](/research/)
+<!-- [Learn what we're working on now →](/research/) -->
