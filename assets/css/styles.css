@@ -45,6 +45,12 @@ footer.bg-dark {
   display: none;
 }
 
+.group-photo img {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+}
+
 .publication-list {
   padding-bottom: 1rem;
 }
