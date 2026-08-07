@@ -12,7 +12,7 @@
       */}}
       <div id="publications-section">
         <ul class="list-unstyled">
-          {{ range first site.Params.publicationsShown site.Data.publications }}
+          {{ range first site.Params.publicationsShown hugo.Data.publications }}
             <li class="publication-list">
               <strong><a href="{{ .url }}" target="_blank" class="publication-link">{{ .title }}</a></strong>
               {{ .authors }}. <i>{{ .journal }}</i>, {{ .year }}. PubMed ID: {{ .pmid }}.
