@@ -1,0 +1,30 @@
+{{/* Render an image from assets/ through the Hugo image pipeline.
+
+  {{< image src="group-photo.jpg" alt="Group Photo" class="group-photo" width="1600"
+>}}
+
+src required, a path under assets/ alt required, the alternative text class optional, a class for the wrapper div width
+optional, the largest width in pixels, default 1600 The shortcode writes a resized webp file with a content based name, and sets
+the width and height attributes. The browser then reserves the space before the image arrives. */}}
+{{ $src := .Get "src" }}
+{{ $img := resources.Get $src }}
+{{ if not $img }}
+  {{ errorf "image shortcode: no asset %q, called from %s" $src .Position }}
+{{ end }}
+{{ $width := int (.Get "width" | default 1600) }}
+{{ if gt $img.Width $width }}
+  {{ $img = $img.Resize (printf "%dx webp q85" $width) }}
+{{ else }}
+  {{ $img = $img.Process "webp q85" }}
+{{ end }}
+{{ $img = $img | fingerprint }}
+<div {{ with .Get "class" }}class="{{ . }}"{{ end }}>
+  <img
+    src="{{ $img.RelPermalink }}"
+    width="{{ $img.Width }}"
+    height="{{ $img.Height }}"
+    alt="{{ .Get "alt" }}"
+    loading="lazy"
+    decoding="async"
+  />
+</div>

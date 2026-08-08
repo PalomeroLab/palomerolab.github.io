@@ -25,7 +25,7 @@
     {{ $styles := slice
       (resources.Get "vendor/scrolling-nav.css")
       (resources.Get "vendor/fontawesome.css")
-      (resources.Get "css/styles.css")
+      (resources.Get "css/styles.css" | resources.ExecuteAsTemplate "css/styles.css" .)
       | resources.Concat "css/bundle.css" | minify | fingerprint
     }}
     <link href="{{ $styles.RelPermalink }}" integrity="{{ $styles.Data.Integrity }}" rel="stylesheet" />

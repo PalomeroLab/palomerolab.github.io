@@ -6,7 +6,21 @@
         For a complete list of publications, please visit
         <a href="https://pubmed.ncbi.nlm.nih.gov/?term=Palomero+T%5BAuthor%5D" target="_blank">PubMed</a>
       </p>
-      <div id="publications-section"></div>
+      {{/* The records come from data/publications.json. A scheduled workflow
+        refreshes that file, see .github/workflows/publications.yml. The build
+        never calls PubMed.
+      */}}
+      <div id="publications-section">
+        <ul class="list-unstyled">
+          {{ range first site.Params.publicationsShown hugo.Data.publications }}
+            <li class="publication-list">
+              <strong><a href="{{ .url }}" target="_blank" class="publication-link">{{ .title }}</a></strong>
+              {{ .authors }}. <i>{{ .journal }}</i>, {{ .year }}. PubMed ID: {{ .pmid }}.
+              {{ with .doi }}DOI: {{ . }}{{ end }}
+            </li>
+          {{ end }}
+        </ul>
+      </div>
     </div>
   </div>
 </div>

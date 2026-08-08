@@ -18,6 +18,17 @@
     <!-- Favicon: icon in the browser tab -->
     <link rel="icon" type="image/x-icon" href="{{ "assets/favicon.png" | relURL }}" />
 
+    {{/* The social card image. The images field in content/_index.md names the
+      path, and the internal opengraph and twitter_cards templates read it. A
+      social scraper caches by URL and does not always read webp, so this file
+      keeps a fixed name and the jpeg format. It is cut from assets/banner.jpg
+      to the size that Open Graph asks for.
+    */}}
+    {{ with (resources.Get "banner.jpg").Fill "1200x630 jpg q85" | resources.Copy "/assets/banner.jpg" }}
+      {{ .Publish }}
+    {{ end }}
+
+
     <!-- Open Graph Meta Tags: tags for social media and search previews -->
     {{ template "_internal/opengraph.html" . }}
 
@@ -36,7 +47,7 @@
     {{ $styles := slice
       (resources.Get "vendor/scrolling-nav.css")
       (resources.Get "vendor/fontawesome.css")
-      (resources.Get "css/styles.css")
+      (resources.Get "css/styles.css" | resources.ExecuteAsTemplate "css/styles.css" .)
       | resources.Concat "css/bundle.css" | minify | fingerprint
     }}
     <link href="{{ $styles.RelPermalink }}" integrity="{{ $styles.Data.Integrity }}" rel="stylesheet" />
@@ -74,16 +85,6 @@
       | resources.Concat "js/bundle.js" | minify | fingerprint
     }}
     <script src="{{ $scripts.RelPermalink }}" integrity="{{ $scripts.Data.Integrity }}"></script>
-    <script src="https://cdn.jsdelivr.net/gh/rdnajac/js/pubmed.js"></script>
-    <script>
-      // pubmed.js fetches MAX_NUM_PUBS items and takes no count argument, so trim after it renders
-      const NUM_PUBS_SHOWN = 5;
-      initializePubMedSection("Teresa Palomero", "publications-section").then(() => {
-        document.querySelectorAll("#publications-section li").forEach((li, i) => {
-          if (i >= NUM_PUBS_SHOWN) li.remove();
-        });
-      });
-    </script>
     <!-- TODO: Generate publication list for each lab member -->
   </body>
 </html>

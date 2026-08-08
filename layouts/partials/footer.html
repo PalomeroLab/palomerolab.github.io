@@ -1,32 +1,34 @@
-<!-- Footer -->
+<!-- Footer. The names and the links come from the params in hugo.toml. -->
+{{ $pi := site.Params.pi }}
+{{ $org := site.Params.institution }}
 <footer class="py-5 bg-dark">
   <div class="container mx-auto">
     <div class="row">
       <div class="col-sm-6 text-white text-center">
-        <a href="https://www.columbia.edu/" target="_blank">
-          <img src="{{ "assets/CU_logo_bg-dark.png" | relURL }}" width="80%" alt="Columbia University Logo" />
+        <a href="{{ $org.universityUrl }}" target="_blank">
+          {{ $logo := resources.Get "CU_logo_bg-dark.png" | fingerprint }}
+          <img src="{{ $logo.RelPermalink }}" width="80%" alt="{{ $org.university }} Logo" />
         </a>
       </div>
       <div class="col-sm-6 text-white text-right">
-        <a href="https://www.pathology.columbia.edu/profile/teresa-m-palomero-phd" class="footer-link"
-          ><strong>Teresa Palomero, PhD</strong></a
+        <a href="{{ $pi.url }}" class="footer-link"><strong>{{ $pi.name }}{{ with $pi.suffix }}, {{ . }}{{ end }}</strong></a
         ><br />
-        Professor of
-        <a href="https://www.pathology.columbia.edu" class="footer-link">Pathology &amp; Cell Biology</a><br />
+        {{ $pi.title }} of
+        <a href="{{ $org.departmentUrl }}" class="footer-link">{{ $org.department }}</a><br />
         at the
-        <a href="https://www.vagelos.columbia.edu/departments-centers/institute-cancer-genetics" class="footer-link"
-          >Institute for Cancer Genetics</a
-        ><br />
+        <a href="{{ $org.centerUrl }}" class="footer-link">{{ $org.center }}</a><br />
         of
-        <a href="https://www.cuimc.columbia.edu" class="footer-link">Columbia University Irving Medical Center</a><br />
+        <a href="{{ $org.medicalCenterUrl }}" class="footer-link">{{ $org.medicalCenter }}</a><br />
       </div>
     </div>
     <div class="row pt-5 pb-0 mb-0">
       <div class="mx-auto text-white text-center">
         <small>
           Created and maintained by
-          <a href="http://www.rdnajac.tech" target="_blank" class="footer-link">Ryan D. Najac</a>
-          · &copy; 2024&ndash;{{ now.Year }} Teresa Palomero
+          <a href="{{ site.Params.maintainer.url }}" target="_blank" class="footer-link">{{ site.Params.maintainer.name }}</a>
+          · &copy;
+          {{ site.Params.maintainer.since }}&ndash;{{ now.Year }}
+          {{ $pi.name }}
         </small>
       </div>
     </div>
